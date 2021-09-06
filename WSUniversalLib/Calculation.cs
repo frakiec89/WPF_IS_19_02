@@ -56,7 +56,7 @@ namespace WSUniversalLib
         /// </summary>
         /// <param name="itogrezDoubl"></param>
         /// <returns></returns>
-        private int ItogInt(double itogrezDoubl)
+        public int ItogInt(double itogrezDoubl)
         {
             int x = Convert.ToInt32(itogrezDoubl);
 
@@ -76,7 +76,7 @@ namespace WSUniversalLib
         /// <param name="rezDoubleNotDefect"></param>
         /// <param name="coefMaterial_type"></param>
         /// <returns></returns>
-        private double GetDefec(double rezDoubleNotDefect, double coefMaterial_type)
+        public double GetDefec(double rezDoubleNotDefect, double coefMaterial_type)
         {
             return rezDoubleNotDefect * coefMaterial_type;
         }
@@ -89,7 +89,7 @@ namespace WSUniversalLib
         /// <param name="length"></param>
         /// <param name="coefProduct_type"></param>
         /// <returns></returns>
-        private double GetRezDoubleNotDefec(int count, float width, float length, double coefProduct_type)
+        public double GetRezDoubleNotDefec(int count, float width, float length, double coefProduct_type)
         {
             return (length * width * coefProduct_type) * count;
         }
@@ -102,7 +102,7 @@ namespace WSUniversalLib
         /// <param name="width"></param>
         /// <param name="length"></param>
         /// <returns>истина  если  плохие  параметры </returns>
-        private bool IsBadArgument(int count, float width, float length)
+        public bool IsBadArgument(int count, float width, float length)
         {
             if ( count <=0)
             { return true; }
