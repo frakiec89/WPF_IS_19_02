@@ -11,8 +11,8 @@ namespace WSUniversalLib
         private const double product_type1 = 1.1; // коэффициенты
         private const double product_type2 = 2.5;
         private const double product_type3 = 8.43;
-        private const double material_type1 = 0.3; // коэффициенты брака
-        private const double material_type2 = 0.12;
+        private const float material_type1 = 0.003F; // коэффициенты брака
+        private const float material_type2 = 0.0012F;
 
         /// <summary>
         /// расчет  материалов  при  производстве
@@ -44,8 +44,8 @@ namespace WSUniversalLib
             }
 
 
-            double rezDoubleNotDefect = GetRezDoubleNotDefec(count, width, length, coefProduct_type);
-            double defect = GetDefec( rezDoubleNotDefect , coefMaterial_type);
+            double rezDoubleNotDefect =  GetRezDoubleNotDefec(count, width, length, coefProduct_type);
+            double defect =   GetDefec( rezDoubleNotDefect , coefMaterial_type);
             double itogrezDoubl = rezDoubleNotDefect + defect;
 
             return ItogInt(itogrezDoubl);  
@@ -60,9 +60,10 @@ namespace WSUniversalLib
         {
             int x = Convert.ToInt32(itogrezDoubl);
 
-            if ( (double)(itogrezDoubl - x)> 0)
+            if ((double)(itogrezDoubl - x) > (double) 0)
             {
-                return x++;
+                x++;
+                return x;
             }
             else
             {
@@ -77,8 +78,10 @@ namespace WSUniversalLib
         /// <param name="coefMaterial_type"></param>
         /// <returns></returns>
         public double GetDefec(double rezDoubleNotDefect, double coefMaterial_type)
-        {
-            return rezDoubleNotDefect * coefMaterial_type;
+        {   
+            var ss = Math.Round(coefMaterial_type, 5);
+            var s = rezDoubleNotDefect * ss;
+            return s+1;
         }
 
         /// <summary>
@@ -125,7 +128,7 @@ namespace WSUniversalLib
         /// </summary>
         /// <param name="material_type"></param>
         /// <returns>получаем  коэффициент брака </returns>
-        public double GetMaterial(int material_type)
+        public float GetMaterial(int material_type)
         {
             switch (material_type)
             {
@@ -140,7 +143,7 @@ namespace WSUniversalLib
         /// </summary>
         /// <param name="productType"></param>
         /// <returns>получаем коэффициент затраты продукта</returns>
-        public double GetProdutc(int productType)
+        public  double GetProdutc(int productType)
         {
           switch (productType)
             {

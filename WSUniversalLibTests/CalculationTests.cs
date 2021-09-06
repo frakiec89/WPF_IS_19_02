@@ -41,13 +41,19 @@ namespace WSUniversalLib.Tests
             Assert.AreEqual(expected, actual);
         }
 
-
         [TestMethod()]
         public void GetProdutcTest4_ArgumentException()
         {
             int type = 4;
             Assert.ThrowsException<ArgumentException>(() => calc.GetProdutc(type));
         }
-            
+
+        [TestMethod()]
+        public void GetQuantityForProductTest()
+        {
+            int extected = 114148;
+            var actual = calc.GetQuantityForProduct(3, 1, 15, 20, 45);
+            Assert.AreEqual(extected, actual);
+        }
     }
 }
