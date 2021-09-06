@@ -55,5 +55,77 @@ namespace WSUniversalLib.Tests
             var actual = calc.GetQuantityForProduct(3, 1, 15, 20, 45);
             Assert.AreEqual(extected, actual);
         }
+
+        [TestMethod()]
+        public void GetMaterialTest1_0_003()
+        {
+            int type = 1;
+            double expected = 0.003;
+            var actual = calc.GetMaterial(type);
+            Assert.AreEqual(expected, actual);
+        }
+
+
+        [TestMethod()]
+        public void GetMaterialTest2_0_00012()
+        {
+            int type = 2;
+            double expected = 0.0012;
+            var actual = calc.GetMaterial(type);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void GetMaterialTest3_ArgumentException()
+        {
+            int type = 3;
+            Assert.ThrowsException<ArgumentException>(() => calc.GetMaterial(type));
+        }
+
+        [TestMethod()]
+        public void IsBadArgumentTest1_False()
+        {
+            int count = 1;
+            float  w = 0.2F;
+            float h = 0.2F;
+
+            bool expected = false;
+
+            var actual = calc.IsBadArgument(count, w, h);
+
+            Assert.AreEqual(expected, actual);
+
+        }
+
+
+        [TestMethod()]
+        public void IsBadArgumentTest2_True()
+        {
+            int count = -1;
+            float w = 0.2F;
+            float h = 0.2F;
+
+            bool expected = true;
+
+            var actual = calc.IsBadArgument(count, w, h);
+
+            Assert.AreEqual(expected, actual);
+
+        }
+
+        [TestMethod()]
+        public void IsBadArgumentTest3_True()
+        {
+            int count = -1;
+            float w = - 0.2F;
+            float h = 0.2F;
+
+            bool expected = true;
+
+            var actual = calc.IsBadArgument(count, w, h);
+
+            Assert.AreEqual(expected, actual);
+
+        }
     }
 }

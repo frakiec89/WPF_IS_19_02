@@ -11,8 +11,8 @@ namespace WSUniversalLib
         private const double product_type1 = 1.1; // коэффициенты
         private const double product_type2 = 2.5;
         private const double product_type3 = 8.43;
-        private const float material_type1 = 0.003F; // коэффициенты брака
-        private const float material_type2 = 0.0012F;
+        private const double material_type1 = 0.003; // коэффициенты брака
+        private const double material_type2 = 0.0012;
 
         /// <summary>
         /// расчет  материалов  при  производстве
@@ -31,7 +31,6 @@ namespace WSUniversalLib
                 return -1;
             }
 
-
             double coefProduct_type, coefMaterial_type;
             try // проверка  типов , поиск  коэффициентов
             {
@@ -42,7 +41,6 @@ namespace WSUniversalLib
             {
                 return -1;
             }
-
 
             double rezDoubleNotDefect =  GetRezDoubleNotDefec(count, width, length, coefProduct_type);
             double defect =   GetDefec( rezDoubleNotDefect , coefMaterial_type);
@@ -128,11 +126,11 @@ namespace WSUniversalLib
         /// </summary>
         /// <param name="material_type"></param>
         /// <returns>получаем  коэффициент брака </returns>
-        public float GetMaterial(int material_type)
+        public Double GetMaterial(int material_type)
         {
             switch (material_type)
             {
-                case 1: return material_type1; break;
+                case 1:  return  material_type1 ; break;
                 case 2: return material_type2; break;
                 default: throw new ArgumentException("Такого материала  нет"  );
             }
