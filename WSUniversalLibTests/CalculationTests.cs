@@ -86,7 +86,7 @@ namespace WSUniversalLib.Tests
         public void IsBadArgumentTest1_False()
         {
             int count = 1;
-            float  w = 0.2F;
+            float w = 0.2F;
             float h = 0.2F;
 
             bool expected = false;
@@ -117,12 +117,39 @@ namespace WSUniversalLib.Tests
         public void IsBadArgumentTest3_True()
         {
             int count = -1;
-            float w = - 0.2F;
+            float w = -0.2F;
             float h = 0.2F;
 
             bool expected = true;
 
             var actual = calc.IsBadArgument(count, w, h);
+
+            Assert.AreEqual(expected, actual);
+
+        }
+
+        [TestMethod()]
+        public void ItogIntTest_16()
+        {
+            double x = 15.0004;
+
+            int expected = 16;
+
+            var actual = calc.ItogInt(x);
+
+            Assert.AreEqual(expected, actual);
+
+        }
+
+
+        [TestMethod()]
+        public void ItogIntTest_15()
+        {
+            double x = 15.0000;
+
+            int expected = 15;
+
+            var actual = calc.ItogInt(x);
 
             Assert.AreEqual(expected, actual);
 
