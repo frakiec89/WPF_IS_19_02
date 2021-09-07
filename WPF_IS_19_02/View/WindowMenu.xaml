@@ -4,8 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_IS_19_02.View"
-        mc:Ignorable="d"  Icon="/Image\Большая пачка.ico"
-        Title="Меню (Рога и  копата )" Height="450" Width="800">
+        mc:Ignorable="d"   
+        Title="(Меню)Рога  и к копыта " MinHeight="300"  
+        MaxHeight="500" MaxWidth="700"
+        MinWidth="400"  
+        SizeToContent="WidthAndHeight"
+        Icon="/Image\Большая пачка.ico" 
+        FontFamily="Verdana" 
+        Background="{StaticResource br1}">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -14,17 +20,18 @@
         </Grid.ColumnDefinitions>
         
         <StackPanel Grid.Column="0" HorizontalAlignment="Left">
-            <Button Padding="5" Margin="10" x:Name="btDn"
+            <Button Background="{StaticResource br2}" Padding="5" Margin="10" x:Name="btDn"
                      Click="btDn_Click" >
                 Назад
             </Button>
         </StackPanel>
 
         <StackPanel Grid.Column="1">
-            <Button Padding="5"  Margin="5" x:Name="bt1" Click="bt1_Click">1</Button>
-            <Button Padding="5" Margin="5" x:Name="bt2" Click="bt2_Click">2</Button>
-            <Button Padding="5" Margin="5" x:Name="bt3" Click="bt3_Click">3</Button>
-            <Button Padding="5"  Margin="5" x:Name="bt4" Click="bt4_Click">4</Button>
+            <Button Background="{StaticResource br2}" Padding="5"  Margin="5" x:Name="bt1" Click="bt1_Click">1</Button>
+            <Button Background="{StaticResource br2}" Padding="5" Margin="5" x:Name="bt2" Click="bt2_Click">2</Button>
+            <Button Background="{StaticResource br2}" Padding="5" Margin="5" x:Name="bt3" Click="bt3_Click">3</Button>
+            <Button Background="{StaticResource br2}" Padding="5"  Margin="5" x:Name="bt4" Click="bt4_Click">4</Button>
+            <Image Margin="10" Width="50" Height="50" Source="/Image\Большая пачка.png"></Image>
         </StackPanel>
     </Grid>
 </Window>

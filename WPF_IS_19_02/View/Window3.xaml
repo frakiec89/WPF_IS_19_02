@@ -5,7 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_IS_19_02.View"
         mc:Ignorable="d"
-        Title="Window3" Height="450" Width="800">
+        Title="Задача 3(Рога  и к копыта)" MinHeight="300"  
+        MaxHeight="500" MaxWidth="700"
+        MinWidth="400"  
+        SizeToContent="WidthAndHeight"
+        Icon="/Image\Большая пачка.ico" 
+        FontFamily="Verdana" 
+        Background="{StaticResource br1}"
+        >
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -14,12 +21,12 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="0" HorizontalAlignment="Left">
-            <Button Padding="5" Margin="10" x:Name="btDn"
+            <Button  Background="{StaticResource br2}"  Padding="5" Margin="10" x:Name="btDn"
                      Click="btDn_Click" >
                 Назад
             </Button>
         </StackPanel>
 
-
+        <Image Margin="10" Width="50" Height="50" Source="/Image\Большая пачка.png"></Image>
     </Grid>
 </Window>
