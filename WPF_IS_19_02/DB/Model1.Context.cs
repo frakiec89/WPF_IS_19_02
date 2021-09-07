@@ -37,6 +37,8 @@ namespace WPF_IS_19_02.DB
         public virtual DbSet<Suppliers> Suppliers { get; set; }
         public virtual DbSet<SupplierTypes> SupplierTypes { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<TypeUSer> TypeUSer { get; set; }
+        public virtual DbSet<User> User { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

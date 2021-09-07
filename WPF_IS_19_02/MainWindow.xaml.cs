@@ -29,9 +29,35 @@ namespace WPF_IS_19_02
        
         private void btGo_Click(object sender, RoutedEventArgs e)
         {
-            View.WindowMenu menu = new View.WindowMenu();
-            menu.Show();
-            this.Close();
+            try
+            {
+                var user = Authentication.AuthenticationUser(tbName.Text, tbPass.Text);
+                View.WindowMenu menu = new View.WindowMenu();
+                menu.Show();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+    }
+
+    public class Authentication
+    {
+        public  static DB.User AuthenticationUser (string login , string password)
+        {
+            try
+            {
+                DB.dEntities entities = new DB.dEntities();
+                var user = entities.User.Single(x => x.Login == login && x.Password == password);
+                if (user != null) return user;
+                else throw new Exception($"пользователь не найден\r ");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Ошибка авторизации \r {ex.Message}");
+            }
         }
     }
 }

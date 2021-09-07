@@ -23,6 +23,9 @@
         <AssociationConnector Association="dModel.FK_Receipts_Skladi" ManuallyRouted="false" />
         <AssociationConnector Association="dModel.FK_Receipts_Suppliers" ManuallyRouted="false" />
         <AssociationConnector Association="dModel.FK_Suppliers_SupplierTypes" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="dModel.TypeUSer" Width="1.5" PointX="7.375" PointY="1.25" />
+        <EntityTypeShape EntityType="dModel.User" Width="1.5" PointX="9.625" PointY="0.875" />
+        <AssociationConnector Association="dModel.FK_User_TypeUSer" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
