@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace WPF_IS_19_02
+namespace WpfApp1
 {
     /// <summary>
     /// Логика взаимодействия для App.xaml
