@@ -10,26 +10,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WPF_IS_19_02
+namespace WPF_IS_19_02.View
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для Window4.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Window4 : Window
     {
-        public MainWindow()
+        public Window4()
         {
             InitializeComponent();
         }
 
-       
-       
-        private void btGo_Click(object sender, RoutedEventArgs e)
+        private void btDn_Click(object sender, RoutedEventArgs e)
         {
-            View.WindowMenu menu = new View.WindowMenu();
+            View.WindowMenu menu = new WindowMenu();
             menu.Show();
             this.Close();
         }
