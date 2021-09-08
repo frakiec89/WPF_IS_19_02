@@ -38,7 +38,13 @@ namespace WPF_IS_19_02
             {
                 DB.dEntities entities = new DB.dEntities();
                 var user = entities.User.Single(x => x.Login == login && x.Password == password);
-                if (user != null) return user;
+                if (user != null)
+                {
+                    DB.Logs logs = new DB.Logs() { UserLogin = user.Login, Date = DateTime.Now };
+                    entities.Logs.Add(logs);
+                    entities.SaveChanges();
+                    return user;
+                }
                 else throw new Exception($"пользователь не найден\r ");
             }
             catch (Exception ex)

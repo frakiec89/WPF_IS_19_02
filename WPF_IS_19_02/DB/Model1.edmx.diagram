@@ -26,6 +26,7 @@
         <EntityTypeShape EntityType="dModel.TypeUSer" Width="1.5" PointX="7.375" PointY="1.25" />
         <EntityTypeShape EntityType="dModel.User" Width="1.5" PointX="9.625" PointY="0.875" />
         <AssociationConnector Association="dModel.FK_User_TypeUSer" />
+        <EntityTypeShape EntityType="dModel.Logs" Width="1.5" PointX="3.375" PointY="8.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
