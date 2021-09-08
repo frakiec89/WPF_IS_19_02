@@ -22,7 +22,7 @@ namespace WPF_IS_19_02.View.ModelView
 
         public ViewMaterial(DB.Materials materials)
         {
-            Image = @"/Image/" + materials.ImagePath;
+            Image = materials.ImagePath;
             NameEndType = $" {materials.MaterialTypes.Name} | {materials.Name}";
             MinCol = $"Минимальное  количество {materials.MinCount} шт.";
             Ostatok = GetOstatoc(materials);
@@ -58,10 +58,8 @@ namespace WPF_IS_19_02.View.ModelView
                     {
                         content += $" {item},";
                     }
-                    
                 }
                 return content;
-
             }
             catch
             {
@@ -71,7 +69,20 @@ namespace WPF_IS_19_02.View.ModelView
 
         private string GetOstatoc(Materials materials)
         {
-            throw new NotImplementedException();
+            try
+            {
+                DB.dEntities entities = new dEntities();
+                var s = entities.Receipts.Where(x => x.Id_Material == materials.Id).Sum(x => x.MaterialsCount);
+                string content = $"Остаток:{s} шт";
+                return content;
+            }
+
+            catch
+            {
+                throw new Exception("Ошибка БД");
+            }
         }
     }
 }
+    
+
