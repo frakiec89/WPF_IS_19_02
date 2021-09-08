@@ -18,6 +18,8 @@ namespace WPF_IS_19_02
             {
                 var user = Authentication.AuthenticationUser(tbName.Text, tbPass.Text);
                 View.WindowMenu menu = new View.WindowMenu();
+                MessageBox.Show("Добро пожаловать " + user.Name);
+
                 menu.Show();
                 this.Close();
             }

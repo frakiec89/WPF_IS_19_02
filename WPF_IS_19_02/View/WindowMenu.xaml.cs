@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPF_IS_19_02.DB;
 
 namespace WPF_IS_19_02.View
 {
@@ -19,10 +20,14 @@ namespace WPF_IS_19_02.View
     /// </summary>
     public partial class WindowMenu : Window
     {
+        public User User { get; }
+
         public WindowMenu()
         {
             InitializeComponent();
         }
+
+       
 
         private void btDn_Click(object sender, RoutedEventArgs e)
         {
