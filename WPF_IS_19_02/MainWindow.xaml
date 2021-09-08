@@ -25,6 +25,8 @@
             <Button  Background="{StaticResource br3}"  MinWidth="250"  Margin="5" 
                     HorizontalAlignment="Center" x:Name="btGo" Click="btGo_Click">Вход</Button>
             <Image ToolTip="Это  картинка" Margin="10" Width="50" Height="50" Source="/Image\Большая пачка.png"></Image>
+
+            <Button Click="Button_Click">test</Button>
             
         </StackPanel>
     </Grid>

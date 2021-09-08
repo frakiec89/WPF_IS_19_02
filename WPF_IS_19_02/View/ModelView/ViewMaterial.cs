@@ -20,9 +20,6 @@ namespace WPF_IS_19_02.View.ModelView
 
         }
 
-
-
-
         public ViewMaterial(DB.Materials materials)
         {
             Image = @"/Image/" + materials.ImagePath;
@@ -32,9 +29,44 @@ namespace WPF_IS_19_02.View.ModelView
             Providers = GetProviders(materials);
         }
 
-        private string GetProviders(Materials materials)
+        public string GetProviders(Materials materials)
         {
-            throw new NotImplementedException();
+            try
+            {
+                DB.dEntities entities = new dEntities();
+                var s = entities.Receipts.Where(x => x.Id_Material == materials.Id).ToList();
+
+                List<string> vs = new List<string>();
+
+                foreach (var item in s)
+                {
+                    vs.Add(item.Suppliers.Name);
+                }
+                vs =  vs.Distinct().OrderBy(x => x).ToList();
+
+                string content = "Поставщики: ";
+
+                for (int i = 0; i < vs.Count; i++)
+                {
+                    string item = vs[i];
+
+                    if (i==vs.Count-1)
+                    {
+                        content += $" {item}.";
+                    }
+                    else
+                    {
+                        content += $" {item},";
+                    }
+                    
+                }
+                return content;
+
+            }
+            catch
+            {
+                throw new Exception("Ошибка БД");
+            }
         }
 
         private string GetOstatoc(Materials materials)
