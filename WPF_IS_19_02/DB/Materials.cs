@@ -29,6 +29,7 @@ namespace WPF_IS_19_02.DB
         public Nullable<int> MinCount { get; set; }
         public Nullable<int> CountPerPack { get; set; }
         public int Id_MaterialSI { get; set; }
+        public string Name { get; set; }
     
         public virtual MaterialColors MaterialColors { get; set; }
         public virtual MaterialSI MaterialSI { get; set; }

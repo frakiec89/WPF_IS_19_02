@@ -14,7 +14,7 @@
         <EntityTypeShape EntityType="dModel.Skladi" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
         <EntityTypeShape EntityType="dModel.Suppliers" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
         <EntityTypeShape EntityType="dModel.SupplierTypes" Width="1.5" PointX="0.75" PointY="13" IsExpanded="true" />
-        <EntityTypeShape EntityType="dModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dModel.sysdiagrams" Width="1.5" PointX="6.5" PointY="5.5" IsExpanded="true" />
         <AssociationConnector Association="dModel.FK_Materials_MaterialColors" ManuallyRouted="false" />
         <AssociationConnector Association="dModel.FK_Materials_MaterialSI" ManuallyRouted="false" />
         <AssociationConnector Association="dModel.FK_Materials_MaterialStandarts" ManuallyRouted="false" />

@@ -33,6 +33,7 @@
           <Property Name="MinCount" Type="int" />
           <Property Name="CountPerPack" Type="int" />
           <Property Name="Id_MaterialSI" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="MaterialSI">
           <Key>
@@ -337,6 +338,7 @@
           <NavigationProperty Name="MaterialStandarts" Relationship="Self.FK_Materials_MaterialStandarts" FromRole="Materials" ToRole="MaterialStandarts" />
           <NavigationProperty Name="MaterialTypes" Relationship="Self.FK_Materials_MaterialTypes" FromRole="Materials" ToRole="MaterialTypes" />
           <NavigationProperty Name="Receipts" Relationship="Self.FK_Receipts_Materials" FromRole="Materials" ToRole="Receipts" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="MaterialSI">
           <Key>
@@ -658,6 +660,7 @@
           <EntitySetMapping Name="Materials">
             <EntityTypeMapping TypeName="dModel.Materials">
               <MappingFragment StoreEntitySet="Materials">
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Id_MaterialType" ColumnName="Id_MaterialType" />
                 <ScalarProperty Name="Id_MaterialColor" ColumnName="Id_MaterialColor" />
