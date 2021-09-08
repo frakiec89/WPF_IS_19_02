@@ -20,18 +20,12 @@ namespace WPF_IS_19_02.View
     /// </summary>
     public partial class WindowMenu : Window
     {
-        public User User { get; }
 
         public WindowMenu()
         {
             InitializeComponent();
+            Title += $"Вход ({App.User.Name}) {App.User.TypeUSer.Name}";
         }
-
-        public WindowMenu(User user):this()
-        {
-            Title += $"Вход ({user.Name}) {user.TypeUSer.Name}";
-        }
-       
 
         private void btDn_Click(object sender, RoutedEventArgs e)
         {

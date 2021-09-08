@@ -11,13 +11,19 @@ namespace WPF_IS_19_02
         public MainWindow()
         {
             InitializeComponent();
+
+            tbName.Text = "Frakiec89"; // todo не забыть  убрать 
+            tbPass.Text = "123";// todo не забыть  убрать 
+
+
         }
         private void btGo_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 var user = Authentication.AuthenticationUser(tbName.Text, tbPass.Text);
-                View.WindowMenu menu = new View.WindowMenu(user);
+                App.User = user;
+                View.WindowMenu menu = new View.WindowMenu();
                 MessageBox.Show("Добро пожаловать " + user.Name);
 
                 menu.Show();
