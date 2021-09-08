@@ -22,6 +22,20 @@ namespace WPF_IS_19_02.View
         public WindowMaterilSklad()
         {
             InitializeComponent();
+
+            List<View.ModelView.ViewMaterial> materials = new List<ModelView.ViewMaterial>()
+            {
+                new ModelView.ViewMaterial(){ Image=@"/Image\image_10.jpeg" , MinCol="Минимальное  количество 2 шт",
+                Ostatok = "Остаток: 2 шт", Providers="Поставщики: рога и копыта, Сгк, и еще  кто нибудь" ,
+                    NameEndType="Какая то штука | зачем  то нужна"
+                },
+                 new ModelView.ViewMaterial(){ Image=@"/Image\image_1.jpeg" , MinCol="Минимальное  количество 5 шт",
+                Ostatok = "Остаток: 0 шт", Providers="Поставщики: рога и копыта, Сгк, и еще  кто нибудь" ,
+                    NameEndType="Какая то штука1 | зачем  то нужна1"
+                }
+            };
+
+            lbContent.ItemsSource = materials;
         }
 
         private void btDn_Click(object sender, RoutedEventArgs e)
