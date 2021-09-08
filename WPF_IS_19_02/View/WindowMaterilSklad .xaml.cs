@@ -17,9 +17,9 @@ namespace WPF_IS_19_02.View
     /// <summary>
     /// Логика взаимодействия для Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class WindowMaterilSklad : Window
     {
-        public Window1()
+        public WindowMaterilSklad()
         {
             InitializeComponent();
         }

@@ -36,9 +36,7 @@ namespace WPF_IS_19_02.View
 
         private void bt1_Click(object sender, RoutedEventArgs e)
         {
-            View.Window1 window = new Window1();
-            window.Show();
-            this.Close();
+           
         }
 
         private void bt2_Click(object sender, RoutedEventArgs e)
@@ -58,6 +56,13 @@ namespace WPF_IS_19_02.View
         private void bt4_Click(object sender, RoutedEventArgs e)
         {
             View.Window4 window = new Window4();
+            window.Show();
+            this.Close();
+        }
+
+        private void btMaterialSklad_Click(object sender, RoutedEventArgs e)
+        {
+            View.WindowMaterilSklad window = new WindowMaterilSklad();
             window.Show();
             this.Close();
         }

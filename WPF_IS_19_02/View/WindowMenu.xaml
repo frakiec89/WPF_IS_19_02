@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:WPF_IS_19_02.View"
         mc:Ignorable="d"   
         Title="(Меню)Рога  и к копыта " MinHeight="300"  
-        MaxHeight="500" MaxWidth="700"
-        MinWidth="400"  
+        MaxHeight="500" MaxWidth="800"
+        MinWidth="500"  
         SizeToContent="WidthAndHeight"
         Icon="/Image\Большая пачка.ico" 
         FontFamily="Verdana" 
@@ -27,7 +27,14 @@
         </StackPanel>
 
         <StackPanel Grid.Column="1">
-            <Button Background="{StaticResource br2}" Padding="5"  Margin="5" x:Name="bt1" Click="bt1_Click">1</Button>
+            <Button Name="btMaterialSklad" Background="{StaticResource br2}"
+                    Padding="5"  Margin="5"  Click="btMaterialSklad_Click">
+                Материалы  на  складе
+            </Button>
+            
+            
+            
+            
             <Button Background="{StaticResource br2}" Padding="5" Margin="5" x:Name="bt2" Click="bt2_Click">2</Button>
             <Button Background="{StaticResource br2}" Padding="5" Margin="5" x:Name="bt3" Click="bt3_Click">3</Button>
             <Button Background="{StaticResource br2}" Padding="5"  Margin="5" x:Name="bt4" Click="bt4_Click">4</Button>
