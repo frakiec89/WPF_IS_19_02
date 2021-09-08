@@ -39,10 +39,10 @@
 
         <!--Строка  поиска  и фильтрации-->
         <StackPanel  Margin="5" Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
-           
-            <TextBox Padding="2" Margin="5" VerticalAlignment="Center" 
+
+            <TextBox TextChanged="TextBox_TextChanged" Padding="2" Margin="5" VerticalAlignment="Center" 
                      Background="{StaticResource br2}"
-                     MinWidth="100" ToolTip="Введите для поиска">Поиск</TextBox>
+                     MinWidth="100" ToolTip="Введите для поиска"></TextBox>
 
             <ComboBox Background="{StaticResource br3}" Margin="5"
                       VerticalAlignment="Center" MinWidth="100" ToolTip="Сортировка"></ComboBox>
@@ -58,9 +58,9 @@
                         <Border HorizontalAlignment="Center" BorderBrush="Black" BorderThickness="2">
                         <Grid  HorizontalAlignment="Stretch" Margin="25">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
+                                <ColumnDefinition   />
+                                 <ColumnDefinition MinWidth="200" Width="400" />
+                                    <ColumnDefinition  Width="200"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition/>

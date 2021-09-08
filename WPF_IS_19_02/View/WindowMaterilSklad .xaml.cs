@@ -39,5 +39,10 @@ namespace WPF_IS_19_02.View
             menu.Show();
             this.Close();
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            MessageBox.Show("Объект не  найден");
+        }
     }
 }

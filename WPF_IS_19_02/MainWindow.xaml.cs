@@ -37,11 +37,7 @@ namespace WPF_IS_19_02
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            View.ModelView.ViewMaterial hh = new View.ModelView.ViewMaterial();
-            DB.dEntities entities = new DB.dEntities();
-
-         var s =     hh.GetProviders(entities.Materials.First());
-            MessageBox.Show(s);
+          
 
         }
     }

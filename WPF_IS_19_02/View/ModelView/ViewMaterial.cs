@@ -9,19 +9,20 @@ namespace WPF_IS_19_02.View.ModelView
 {
     public  class ViewMaterial
     {
+
+        public DB.Materials Materials { get; set; }
         public string Image { get; set; }
         public string NameEndType { get; set; }
         public string Ostatok { get; set; }
         public string MinCol{ get; set; }
         public string Providers { get; set; }
-       
-        public ViewMaterial()
-        {
-
-        }
+        public int count { get; set; }
+        public List<string> ProvidersString { get; set; }
 
         public ViewMaterial(DB.Materials materials)
         {
+
+            Materials = materials;
             Image = materials.ImagePath;
             NameEndType = $" {materials.MaterialTypes.Name} | {materials.Name}";
             MinCol = $"Минимальное  количество {materials.MinCount} шт.";
@@ -35,9 +36,10 @@ namespace WPF_IS_19_02.View.ModelView
             {
                 DB.dEntities entities = new dEntities();
                 var s = entities.Receipts.Where(x => x.Id_Material == materials.Id).ToList();
+               
 
                 List<string> vs = new List<string>();
-
+                ProvidersString = vs;
                 foreach (var item in s)
                 {
                     vs.Add(item.Suppliers.Name);
@@ -58,6 +60,10 @@ namespace WPF_IS_19_02.View.ModelView
                     {
                         content += $" {item},";
                     }
+                    if (i%3 ==0)
+                    {
+                        content += "\n";
+                    }
                 }
                 return content;
             }
@@ -73,6 +79,8 @@ namespace WPF_IS_19_02.View.ModelView
             {
                 DB.dEntities entities = new dEntities();
                 var s = entities.Receipts.Where(x => x.Id_Material == materials.Id).Sum(x => x.MaterialsCount);
+
+                count = (int) s;
                 string content = $"Остаток:{s} шт";
                 return content;
             }
