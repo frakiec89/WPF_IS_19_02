@@ -27,6 +27,10 @@ namespace WPF_IS_19_02.View
             InitializeComponent();
         }
 
+        public WindowMenu(User user):this()
+        {
+            Title += $"Вход ({user.Name}) {user.TypeUSer.Name}";
+        }
        
 
         private void btDn_Click(object sender, RoutedEventArgs e)
