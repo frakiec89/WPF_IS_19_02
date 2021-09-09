@@ -20,15 +20,22 @@ namespace WPF_IS_19_02.View
     /// </summary>
     public partial class WindowMaterilSklad : Window
     {
-        private int actualList = 1;
+        private int actualList = 1; // 
         private int actualMax;
 
-        private List<View.ModelView.ViewMaterial> content = new List<ModelView.ViewMaterial>();
+        private List<string> constenCBSort = new List<string> {
+            "Без сортировки", "По наименованию (Возрастание)" ,"По наименованию (Убывание)" ,
+            "По остатку на складе (Возрастание)", "По остатку на складе (Убывание)",
+            "По стоимости (Возрастание)" ,"По стоимости (Убывание)"
+        };
 
+
+        private List<View.ModelView.ViewMaterial> content = new List<ModelView.ViewMaterial>();
+        
         public WindowMaterilSklad()
         {
             InitializeComponent();
-
+            
             try
             {
                 content = GetContent();
@@ -38,6 +45,8 @@ namespace WPF_IS_19_02.View
                 var s = WindosMaterialService.IntMin(actualList);
                 RefreshContent(s, WindosMaterialService.CountContent(s, content.Count));
                 labelList.Content = $"лист {actualList}";
+                CbSort.ItemsSource = constenCBSort;
+                CbSort.SelectedIndex = 0;
 
             }
             catch(Exception ex)
@@ -45,6 +54,8 @@ namespace WPF_IS_19_02.View
                 MessageBox.Show(ex.Message);
             }
         }
+
+    
 
         private List<ViewMaterial> GetContent()
         {
@@ -58,6 +69,14 @@ namespace WPF_IS_19_02.View
             }
         }
 
+
+
+
+        /// <summary>
+        /// Кнопка назад
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btDn_Click(object sender, RoutedEventArgs e)
         {
             View.WindowMenu menu = new WindowMenu();
@@ -65,41 +84,8 @@ namespace WPF_IS_19_02.View
             this.Close();
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            MessageBox.Show("Объект не  найден");
-        }
 
-
-        private void  DinamicStakBytton( int count )
-        {
-            int countButton = WindosMaterialService.GetCountButton(count);
-            spButtons.Children.Add(CreateButtun("btDown", "<<", btDown_Ckick)); // Добавил первую кнопку 
-            
-            for (int i = 0; i < WindosMaterialService.GetCountButton(count); i++) // генерация кнопок
-            {
-                spButtons.Children.Add(CreateButtun($"btNext{i}",  $"{i+1}", btNext_Ckick)); // Добавил первую кнопку 
-            }
-            spButtons.Children.Add(CreateButtun("btUp", ">>", btUp_Ckick)); // Добавил первую кнопку 
-        }
-
-        private void btDown_Ckick ( object Sender , RoutedEventArgs e)
-        {
-            if(actualList>1)
-            {
-                actualList--;
-                var s =  WindosMaterialService.IntMin(actualList);
-                RefreshContent(s, WindosMaterialService.CountContent(s, content.Count));
-            }
-        }
-
-        private void RefreshContent(int start, int  end)
-        {
-            var s = content.GetRange(start, end);
-            lbContent.ItemsSource = s;
-            labelList.Content = $"лист {actualList}";
-        }
-
+        #region Методы для кнопок списка
         private void btUp_Ckick(object Sender, RoutedEventArgs e)
         {
             if (actualList <actualMax  )
@@ -109,7 +95,6 @@ namespace WPF_IS_19_02.View
                 RefreshContent(s, WindosMaterialService.CountContent(s,content.Count));
             }
         }
-
         private void btNext_Ckick(object Sender, RoutedEventArgs e)
         {
             var but = e.OriginalSource as Button;
@@ -117,7 +102,35 @@ namespace WPF_IS_19_02.View
             var s = WindosMaterialService.IntMin(actualList);
             RefreshContent(s, WindosMaterialService.CountContent(s, content.Count));
         }
+        private void btDown_Ckick(object Sender, RoutedEventArgs e)
+        {
+            if (actualList > 1)
+            {
+                actualList--;
+                var s = WindosMaterialService.IntMin(actualList);
+                RefreshContent(s, WindosMaterialService.CountContent(s, content.Count));
+            }
+        }
+        private void RefreshContent(int start, int end)
+        {
+            var s = content.GetRange(start, end);
+            lbContent.ItemsSource = s;
+            labelList.Content = $"лист {actualList}";
+        }
+        #endregion
 
+        #region Генерация стекпенел навигации
+        private void DinamicStakBytton(int count)
+        {
+            int countButton = WindosMaterialService.GetCountButton(count);
+            spButtons.Children.Add(CreateButtun("btDown", "<<", btDown_Ckick)); // Добавил первую кнопку 
+
+            for (int i = 0; i < WindosMaterialService.GetCountButton(count); i++) // генерация кнопок
+            {
+                spButtons.Children.Add(CreateButtun($"btNext{i}", $"{i + 1}", btNext_Ckick)); // Добавил первую кнопку 
+            }
+            spButtons.Children.Add(CreateButtun("btUp", ">>", btUp_Ckick)); // Добавил первую кнопку 
+        }
 
         private Button CreateButtun (string name , string content,  RoutedEventHandler  action )
         {
@@ -127,6 +140,27 @@ namespace WPF_IS_19_02.View
             b.HorizontalAlignment = HorizontalAlignment.Center;
             b.Click+=action ;
             return b;
+        }
+        #endregion
+
+
+        #region Сортировка
+        private void CbSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+        #endregion
+
+
+
+        /// <summary>
+        /// Поиск
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            MessageBox.Show("Объект не  найден");
         }
     }
 
