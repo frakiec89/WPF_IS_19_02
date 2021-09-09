@@ -23,7 +23,10 @@ namespace WPF_IS_19_02.View.ModelView
         {
 
             Materials = materials;
-            Image = materials.ImagePath;
+
+            Image = string.IsNullOrWhiteSpace(materials.ImagePath) ? @"/Image\NoImage.jpg" : materials.ImagePath;
+
+
             NameEndType = $" {materials.MaterialTypes.Name} | {materials.Name}";
             MinCol = $"Минимальное  количество {materials.MinCount} шт.";
             Ostatok = GetOstatoc(materials);

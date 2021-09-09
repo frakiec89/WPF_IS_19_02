@@ -116,21 +116,18 @@ namespace WPF_IS_19_02.View
             actualList = Convert.ToInt32(but.Content.ToString());
             var s = WindosMaterialService.IntMin(actualList);
             RefreshContent(s, WindosMaterialService.CountContent(s, content.Count));
-
-
         }
 
 
         private Button CreateButtun (string name , string content,  RoutedEventHandler  action )
         {
            var b = new Button() { Name = name, Content = content , Margin= new Thickness(5) };
+            b.Padding = new Thickness(4);
             b.Background = new SolidColorBrush(Color.FromArgb(255, 255, 193, 193));
             b.HorizontalAlignment = HorizontalAlignment.Center;
             b.Click+=action ;
             return b;
         }
-
-
     }
 
     public class WindosMaterialService
