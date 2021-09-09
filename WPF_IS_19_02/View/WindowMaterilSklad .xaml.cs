@@ -248,6 +248,13 @@ namespace WPF_IS_19_02.View
 
             Run(s);
         }
+
+        private void btAddMaterial_Click(object sender, RoutedEventArgs e)
+        {
+            View.WindowAddMeterial windowAddMeterial = new WindowAddMeterial();
+            windowAddMeterial.Show();
+            this.Close();
+        }
     }
 
     public class WindosMaterialService
