@@ -219,6 +219,13 @@ namespace WPF_IS_19_02.View
             var s  = content.Where(x => x.Materials.Name.ToUpper().
             StartsWith(txSearch.Text.ToUpper()))
                 .ToList();
+
+            s.AddRange(content.Where(x => x.Providers.ToUpper().Contains(txSearch.Text.ToUpper())));
+
+            s.AddRange(content.Where(x => x.Materials.MaterialTypes.Name.ToUpper().Contains(txSearch.Text.ToUpper())));
+
+            s = s.Distinct().ToList();
+
             if(s.Count <1)
             {
                 MessageBox.Show("Объект не  найден");
