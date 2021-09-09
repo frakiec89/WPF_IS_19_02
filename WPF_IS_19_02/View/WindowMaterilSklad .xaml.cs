@@ -95,7 +95,7 @@ namespace WPF_IS_19_02.View
             {
                 actualList++;
                 var s = WindosMaterialService.IntMin(actualList);
-                RefreshContent(s, WindosMaterialService.CountContent(s,content.Count));
+                RefreshContent(s, WindosMaterialService.CountContent(s,content.Count),content);
             }
         }
         private void btNext_Ckick(object Sender, RoutedEventArgs e)
@@ -103,7 +103,7 @@ namespace WPF_IS_19_02.View
             var but = e.OriginalSource as Button;
             actualList = Convert.ToInt32(but.Content.ToString());
             var s = WindosMaterialService.IntMin(actualList);
-            RefreshContent(s, WindosMaterialService.CountContent(s, content.Count));
+            RefreshContent(s, WindosMaterialService.CountContent(s, content.Count),content);
         }
         private void btDown_Ckick(object Sender, RoutedEventArgs e)
         {
@@ -111,13 +111,14 @@ namespace WPF_IS_19_02.View
             {
                 actualList--;
                 var s = WindosMaterialService.IntMin(actualList);
-                RefreshContent(s, WindosMaterialService.CountContent(s, content.Count));
+                RefreshContent(s, WindosMaterialService.CountContent(s, content.Count) , content);
             }
         }
         private void RefreshContent( int start, int end , List<View.ModelView.ViewMaterial> materials)
         {
             List<View.ModelView.ViewMaterial> s = new List<ViewMaterial>();
-            s = materials.GetRange(start, end);
+            s.AddRange( materials.GetRange(start, end));
+            lbContent.ItemsSource = null;
             lbContent.ItemsSource = s;
             labelList.Content = $"лист {actualList}";
         }
@@ -155,7 +156,7 @@ namespace WPF_IS_19_02.View
 
             switch (CbSort.SelectedItem.ToString())
             {
-                case "Без сортировки":  Run(content);break;
+                case "Без сортировки":  Run(GetContent());break;
                 case "По наименованию (Возрастание)": SortNameUp(); break;
                 default:
                     break; 
@@ -166,10 +167,8 @@ namespace WPF_IS_19_02.View
 
         private void SortNameUp()
         {
-            List<View.ModelView.ViewMaterial> contSort = new List<ViewMaterial>();
-              contSort.AddRange(  content.OrderBy(x=>x.Image).ToList());
-            lbContent.ItemsSource = null;
-            Run(contSort);
+            content = content.OrderBy(x => x.Image).ToList();
+            Run(content);
         }
         #endregion
 
