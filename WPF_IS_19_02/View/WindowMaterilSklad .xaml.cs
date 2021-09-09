@@ -39,23 +39,29 @@ namespace WPF_IS_19_02.View
             try
             {
                 content = GetContent();
-                lbContent.ItemsSource = content;
-                DinamicStakBytton(content.Count);
-                actualMax = spButtons.Children.Count - 2;
-                var s = WindosMaterialService.IntMin(actualList);
-                RefreshContent(s, WindosMaterialService.CountContent(s, content.Count));
-                labelList.Content = $"лист {actualList}";
+                Run(content);
                 CbSort.ItemsSource = constenCBSort;
                 CbSort.SelectedIndex = 0;
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
 
-    
+        private void Run(List<View.ModelView.ViewMaterial> materials)
+        {
+            lbContent.ItemsSource = null;
+            lbContent.ItemsSource = materials;
+            DinamicStakBytton(materials.Count);
+            actualMax = spButtons.Children.Count - 2;
+            var s = WindosMaterialService.IntMin(actualList);
+            RefreshContent(s, WindosMaterialService.CountContent(s, materials.Count) , materials);
+            labelList.Content = $"лист {actualList}";
+           
+        }
+
 
         private List<ViewMaterial> GetContent()
         {
@@ -68,9 +74,6 @@ namespace WPF_IS_19_02.View
                 throw new Exception();
             }
         }
-
-
-
 
         /// <summary>
         /// Кнопка назад
@@ -111,9 +114,10 @@ namespace WPF_IS_19_02.View
                 RefreshContent(s, WindosMaterialService.CountContent(s, content.Count));
             }
         }
-        private void RefreshContent(int start, int end)
+        private void RefreshContent( int start, int end , List<View.ModelView.ViewMaterial> materials)
         {
-            var s = content.GetRange(start, end);
+            List<View.ModelView.ViewMaterial> s = new List<ViewMaterial>();
+            s = materials.GetRange(start, end);
             lbContent.ItemsSource = s;
             labelList.Content = $"лист {actualList}";
         }
@@ -122,6 +126,7 @@ namespace WPF_IS_19_02.View
         #region Генерация стекпенел навигации
         private void DinamicStakBytton(int count)
         {
+            spButtons.Children.Clear();
             int countButton = WindosMaterialService.GetCountButton(count);
             spButtons.Children.Add(CreateButtun("btDown", "<<", btDown_Ckick)); // Добавил первую кнопку 
 
@@ -148,6 +153,23 @@ namespace WPF_IS_19_02.View
         private void CbSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+            switch (CbSort.SelectedItem.ToString())
+            {
+                case "Без сортировки":  Run(content);break;
+                case "По наименованию (Возрастание)": SortNameUp(); break;
+                default:
+                    break; 
+            }
+
+
+        }
+
+        private void SortNameUp()
+        {
+            List<View.ModelView.ViewMaterial> contSort = new List<ViewMaterial>();
+              contSort.AddRange(  content.OrderBy(x=>x.Image).ToList());
+            lbContent.ItemsSource = null;
+            Run(contSort);
         }
         #endregion
 
