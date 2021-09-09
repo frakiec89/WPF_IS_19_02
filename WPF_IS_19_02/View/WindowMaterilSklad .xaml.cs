@@ -158,6 +158,11 @@ namespace WPF_IS_19_02.View
             {
                 case "Без сортировки":  Run(GetContent());break;
                 case "По наименованию (Возрастание)": SortNameUp(); break;
+                case "По наименованию (Убывание)": SortNameDown(); break;
+                case "По остатку на складе (Возрастание)": SortOstatokUp(); break;
+                case "По остатку на складе (Убывание)": SortOstatoDown(); break;
+                case "По стоимости (Возрастание)": SortPriceUp(); break;
+                case "По стоимости (Убывание)" : SortPriceDown(); break;
                 default:
                     break; 
             }
@@ -165,9 +170,39 @@ namespace WPF_IS_19_02.View
 
         }
 
+        private void SortPriceDown()
+        {
+            content = content.OrderByDescending(x => x.Materials.Price).ToList();
+            Run(content);
+        }
+
+        private void SortPriceUp()
+        {
+            content = content.OrderBy(x => x.Materials.Price).ToList();
+            Run(content);
+        }
+
+        private void SortOstatoDown()
+        {
+            content = content.OrderByDescending(x => x.count).ToList();
+            Run(content);
+        }
+
+        private void SortOstatokUp()
+        {
+            content = content.OrderBy(x => x.count).ToList();
+            Run(content);
+        }
+
+        private void SortNameDown()
+        {
+            content = content.OrderByDescending(x => x.Materials.Name).ToList();
+            Run(content);
+        }
+
         private void SortNameUp()
         {
-            content = content.OrderBy(x => x.Image).ToList();
+            content = content.OrderBy(x => x.Materials.Name).ToList();
             Run(content);
         }
         #endregion
@@ -181,7 +216,18 @@ namespace WPF_IS_19_02.View
         /// <param name="e"></param>
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            MessageBox.Show("Объект не  найден");
+            var s  = content.Where(x => x.Materials.Name.ToUpper().
+            StartsWith(txSearch.Text.ToUpper()))
+                .ToList();
+            if(s.Count <1)
+            {
+                MessageBox.Show("Объект не  найден");
+                txSearch.Text = string.Empty;
+                Run(GetContent());
+                return;
+            }
+
+            Run(s);
         }
     }
 
