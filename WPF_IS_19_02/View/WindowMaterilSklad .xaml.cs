@@ -61,7 +61,8 @@ namespace WPF_IS_19_02.View
             var s = WindosMaterialService.IntMin(actualList);
             RefreshContent(s, WindosMaterialService.CountContent(s, materials.Count) , materials);
             labelList.Content = $"лист {actualList}";
-           
+            labelItog.Content = $"В базе  {GetContent().Count} записей";
+            LabelRezult.Content = $"Выведено {lbContent.Items.Count} записей";
         }
 
 
@@ -98,6 +99,7 @@ namespace WPF_IS_19_02.View
                 actualList++;
                 var s = WindosMaterialService.IntMin(actualList);
                 RefreshContent(s, WindosMaterialService.CountContent(s,content.Count),content);
+
             }
         }
         private void btNext_Ckick(object Sender, RoutedEventArgs e)
@@ -118,11 +120,23 @@ namespace WPF_IS_19_02.View
         }
         private void RefreshContent( int start, int end , List<View.ModelView.ViewMaterial> materials)
         {
+
             List<View.ModelView.ViewMaterial> s = new List<ViewMaterial>();
-            s.AddRange( materials.GetRange(start, end));
+           
+            if (materials.Count> end && end>0)
+            {
+                s.AddRange(materials.GetRange(start, end));
+            }
+            else
+            {
+                return;
+            }
+          
             lbContent.ItemsSource = null;
             lbContent.ItemsSource = s;
             labelList.Content = $"лист {actualList}";
+            labelItog.Content = $"В базе  {GetContent().Count} записей";
+            LabelRezult.Content = $"Выведено {lbContent.Items.Count} записей";
         }
         #endregion
 

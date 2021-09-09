@@ -17,13 +17,15 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="100*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="10*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
+
+       
         
         <!--Меню слева-->
         <StackPanel Grid.Column="0" HorizontalAlignment="Left"
@@ -50,6 +52,10 @@
             
             <ComboBox Name="cbFilter" Background="{StaticResource br3}" Margin="5" 
                       VerticalAlignment="Center" MinWidth="100" ToolTip="Фильтрация"></ComboBox>
+
+            <Label Margin="5" Name="labelItog"></Label>
+            <Label  Margin="5" Name="LabelRezult"></Label>
+
         </StackPanel>
         <Border  Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="2">
             
