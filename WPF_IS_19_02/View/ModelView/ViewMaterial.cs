@@ -37,6 +37,7 @@ namespace WPF_IS_19_02.View.ModelView
                 DB.dEntities entities = new dEntities();
                 var s = entities.Receipts.Where(x => x.Id_Material == materials.Id).ToList();
                
+                if (s == null) return "Поставщиков  нет";
 
                 List<string> vs = new List<string>();
                 ProvidersString = vs;
@@ -79,6 +80,7 @@ namespace WPF_IS_19_02.View.ModelView
             {
                 DB.dEntities entities = new dEntities();
                 var s = entities.Receipts.Where(x => x.Id_Material == materials.Id).Sum(x => x.MaterialsCount);
+                if (s == null) return "Товара на складе нет";
 
                 count = (int) s;
                 string content = $"Остаток:{s} шт";
