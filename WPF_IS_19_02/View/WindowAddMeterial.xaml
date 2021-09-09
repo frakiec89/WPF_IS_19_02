@@ -26,6 +26,7 @@
                 Назад
             </Button>
         </StackPanel>
+        
         <Image Margin="10" Width="50" Height="50" Source="/Image\Большая пачка.png"></Image>
         <StackPanel Grid.Row="1" Grid.Column="1">
            
@@ -42,11 +43,7 @@
                 <TextBlock Margin="5">Укажите цену</TextBlock>
                 <TextBox MinWidth="100" Margin="5" x:Name="tbPrice"></TextBox>
             </StackPanel>
-            <StackPanel Margin="5" Orientation="Horizontal">
-                <TextBlock Margin="5">Укажите минимальное  колличесво</TextBlock>
-                <TextBox MinWidth="100" Margin="5" x:Name="tbMinCount"></TextBox>
-            </StackPanel>
-
-        </StackPane
+        </StackPanel>
+                    
     </Grid>
 </Window>
