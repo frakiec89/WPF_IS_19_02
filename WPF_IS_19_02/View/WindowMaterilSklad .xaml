@@ -84,9 +84,12 @@
 
             </ListBox>
         </Border>
-       
 
-        
+
+        <StackPanel x:Name="spButtons" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
+            
+
+        </StackPanel>
         
         
         
