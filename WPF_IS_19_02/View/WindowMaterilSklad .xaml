@@ -48,7 +48,7 @@
                       VerticalAlignment="Center" MinWidth="100" ToolTip="Сортировка" SelectionChanged="CbSort_SelectionChanged">
             </ComboBox>
             
-            <ComboBox Background="{StaticResource br3}" Margin="5" 
+            <ComboBox Name="cbFilter" Background="{StaticResource br3}" Margin="5" 
                       VerticalAlignment="Center" MinWidth="100" ToolTip="Фильтрация"></ComboBox>
         </StackPanel>
         <Border  Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="2">

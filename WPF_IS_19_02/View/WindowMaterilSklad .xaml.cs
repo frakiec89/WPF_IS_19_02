@@ -29,7 +29,6 @@ namespace WPF_IS_19_02.View
             "По стоимости (Возрастание)" ,"По стоимости (Убывание)"
         };
 
-
         private List<View.ModelView.ViewMaterial> content = new List<ModelView.ViewMaterial>();
         
         public WindowMaterilSklad()
@@ -42,6 +41,9 @@ namespace WPF_IS_19_02.View
                 Run(content);
                 CbSort.ItemsSource = constenCBSort;
                 CbSort.SelectedIndex = 0;
+
+                cbFilter.ItemsSource = ContrillerMaterial.GetMaterial();
+                cbFilter.SelectedIndex = 0;
 
             }
             catch (Exception ex)
@@ -148,8 +150,6 @@ namespace WPF_IS_19_02.View
             return b;
         }
         #endregion
-
-
         #region Сортировка
         private void CbSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -166,8 +166,6 @@ namespace WPF_IS_19_02.View
                 default:
                     break; 
             }
-
-
         }
 
         private void SortPriceDown()
