@@ -116,15 +116,22 @@ namespace WPF_IS_19_02.View
 
            try
            {
-                ControllerMaterial.AddMateril(tbName.Text, tbDescription.Text
+               if ( ControllerMaterial.AddMateril(tbName.Text, tbDescription.Text
                     , tbMinCount.Text, tbPackageCount.Text, tbPriceR.Text, cbImage.SelectedItem,
                     cbSI.SelectedItem, cbTypeMaterial.SelectedItem
-                    );
+                    ))
+                {
+                    MessageBox.Show("Объект  добавлен в  БД");
+                }
+               else
+                {
+                    MessageBox.Show("Объект не   добавлен в  БД");
+                }
            }
            catch (Exception ex)
            {
-
-           }
+                MessageBox.Show("Ошибка добавления в  бд");
+            }
         }
     }
 }
