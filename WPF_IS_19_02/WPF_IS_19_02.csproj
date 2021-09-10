@@ -121,8 +121,8 @@
     <Compile Include="View\WindowMaterilSklad .xaml.cs">
       <DependentUpon>WindowMaterilSklad .xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Window2.xaml.cs">
-      <DependentUpon>Window2.xaml</DependentUpon>
+    <Compile Include="View\AddImage.xaml.cs">
+      <DependentUpon>AddImage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Window3.xaml.cs">
       <DependentUpon>Window3.xaml</DependentUpon>
@@ -168,7 +168,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Window2.xaml">
+    <Page Include="View\AddImage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

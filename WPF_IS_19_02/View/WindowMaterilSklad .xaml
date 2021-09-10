@@ -61,7 +61,7 @@
             <ListBox  x:Name="lbContent">
                 <ListBox.ItemTemplate >
                     <DataTemplate >
-                        <Border HorizontalAlignment="Center" BorderBrush="Black" BorderThickness="2">
+                        <Border ToolTip="Кликнете дважды что бы редактировать" HorizontalAlignment="Center" BorderBrush="Black" BorderThickness="2">
                         <Grid  HorizontalAlignment="Stretch" Margin="25">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition   />

@@ -1,4 +1,4 @@
-﻿<Window x:Class="WPF_IS_19_02.View.Window2"
+﻿<Window x:Class="WPF_IS_19_02.View.AddImage"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -27,6 +27,9 @@
             </Button>
         </StackPanel>
         <Image Margin="10" Width="50" Height="50" Source="/Image\Большая пачка.png"></Image>
+        <Button Grid.Column="1"  MaxHeight="50" Click="btAdd_Click" x:Name="btAdd">
+            Добавить картинку
+        </Button>
 
     </Grid>
 </Window>

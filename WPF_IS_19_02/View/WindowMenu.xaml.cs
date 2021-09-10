@@ -33,15 +33,11 @@ namespace WPF_IS_19_02.View
             mainWindow.Show();
             this.Close();
         }
-
-        private void bt1_Click(object sender, RoutedEventArgs e)
-        {
-           
-        }
+       
 
         private void bt2_Click(object sender, RoutedEventArgs e)
         {
-            View.Window2 window = new Window2();
+            View.AddImage window = new AddImage();
             window.Show();
             this.Close();
         }

@@ -34,7 +34,7 @@ namespace WPF_IS_19_02.View
         public WindowMaterilSklad()
         {
             InitializeComponent();
-            
+            lbContent.MouseDoubleClick += LbContent_MouseDoubleClick;
             try
             {
                 content = GetContent();
@@ -50,6 +50,17 @@ namespace WPF_IS_19_02.View
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void LbContent_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var sours = e.OriginalSource as Border; 
+            if(sours == null)
+            {
+                return;
+            }
+            var material = sours.DataContext as View.ModelView.ViewMaterial;
+            MessageBox.Show(material.Materials.Id.ToString());
         }
 
         private void Run(List<View.ModelView.ViewMaterial> materials)
