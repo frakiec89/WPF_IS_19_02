@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Windows;
+using WPF_IS_19_02.View;
+
 namespace WPF_IS_19_02
 {
     /// <summary>
@@ -37,8 +39,10 @@ namespace WPF_IS_19_02
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-          
 
+            View.WindowAddMeterial windowAddMeterial = new WindowAddMeterial();
+            windowAddMeterial.Show();
+            this.Close();
         }
     }
 

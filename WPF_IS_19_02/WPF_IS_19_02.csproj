@@ -75,6 +75,7 @@
     </Compile>
     <Compile Include="Controllers\ControllerMaterial.cs" />
     <Compile Include="View\ContrillerMaterial.cs" />
+    <Compile Include="View\ContrillerSI.cs" />
     <Compile Include="View\ModelView\ViewMaterial.cs" />
     <Compile Include="View\WindowAddMeterial.xaml.cs">
       <DependentUpon>WindowAddMeterial.xaml</DependentUpon>

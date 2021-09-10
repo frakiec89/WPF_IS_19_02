@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_IS_19_02.View"
         mc:Ignorable="d"
-       Title="Добавить материал" MinHeight="300"  
-        MaxHeight="500" MaxWidth="700"
+       Title="Добавить материал" MinHeight="500"  
+        MaxHeight="1000" MaxWidth="1000"
         MinWidth="400"  
         SizeToContent="WidthAndHeight"
         Icon="/Image\Большая пачка.ico" 
@@ -16,7 +16,6 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
-            <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
@@ -32,18 +31,48 @@
            
             <StackPanel Margin="5" Orientation="Horizontal">
                 <TextBlock Margin="5">Введите название материала </TextBlock>
-                <TextBox MinWidth="100" Margin="5" x:Name="tbName"></TextBox>
+                <TextBox Background="{StaticResource br2}" MinWidth="100" Margin="5" x:Name="tbName"></TextBox>
             </StackPanel>
             
             <StackPanel Margin="5" Orientation="Horizontal">
                 <TextBlock Margin="5">Подробное  описание </TextBlock>
-                <TextBox MinWidth="100" Margin="5" x:Name="tbDescription"></TextBox>
+                <TextBox Background="{StaticResource br2}" MinWidth="100" Margin="5" x:Name="tbDescription"></TextBox>
             </StackPanel>
             <StackPanel Margin="5" Orientation="Horizontal">
                 <TextBlock Margin="5">Укажите цену</TextBlock>
-                <TextBox MinWidth="100" Margin="5" x:Name="tbPrice"></TextBox>
+                <TextBox Background="{StaticResource br2}" MinWidth="100" Margin="5" x:Name="tbPriceR"></TextBox>
+                <TextBlock Margin="5">P</TextBlock>
             </StackPanel>
+
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <TextBlock Margin="5">единица измерения</TextBlock>
+                <ComboBox Margin="5" Name="cbSI"></ComboBox>
+                <TextBlock Background="{StaticResource br2}" Margin="5"></TextBlock>
+            </StackPanel>
+            
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <TextBlock Margin="5">Минимальное кол-во</TextBlock>
+                <TextBox  Background="{StaticResource br2}" MinWidth="100" Margin="5" x:Name="tbMinCount"></TextBox>
+                <TextBlock  Margin="5" ></TextBlock>
+            </StackPanel>
+            
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <TextBlock Margin="5">Кол-во  в  упаковке</TextBlock>
+                <TextBox  Background="{StaticResource br2}" MinWidth="100" Margin="5" x:Name="tbPackageCount"></TextBox>
+                <TextBlock Margin="5"></TextBlock>
+            </StackPanel>
+
+            <StackPanel  Margin="5" Orientation="Horizontal">
+                <TextBlock Margin="5">Материал </TextBlock>
+                <ComboBox Margin="5" Name="cbTypeMaterial"></ComboBox>
+            </StackPanel>
+
+            <StackPanel  Margin="5" Orientation="Horizontal">
+                <TextBlock Margin="5">Изображение</TextBlock>
+                <ComboBox Margin="5" Name="cbImage"></ComboBox>
+            </StackPanel>
+
+            <Button Margin="5" Background="{StaticResource br2}" x:Name="btAdd">Добавить в БД</Button>
         </StackPanel>
-                    
     </Grid>
 </Window>

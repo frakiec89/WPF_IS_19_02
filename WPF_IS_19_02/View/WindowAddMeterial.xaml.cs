@@ -22,6 +22,26 @@ namespace WPF_IS_19_02.View
         public WindowAddMeterial()
         {
             InitializeComponent();
+            this.Loaded += WindowAddMeterial_Loaded;
+            
+        }
+
+        private void WindowAddMeterial_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Run();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Run()
+        {
+            cbTypeMaterial.ItemsSource = ContrillerMaterial.GetMaterialComboBox();
+            cbSI.ItemsSource = ContrillerSI.GetSIComboBox();
         }
 
         private void btDn_Click(object sender, RoutedEventArgs e)
