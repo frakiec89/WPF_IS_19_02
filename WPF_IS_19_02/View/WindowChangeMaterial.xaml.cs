@@ -61,15 +61,23 @@ namespace WPF_IS_19_02.View
                 MessageBox.Show("Error db");
             }
 
-
-
-
-
         }
 
         private void btAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+               if (  ControllerMaterial.ChaneMateril(tbName.Text, tbDescription.Text
+                   , tbMinCount.Text, tbPackageCount.Text, tbPriceR.Text, cbImage.SelectedItem,
+                   cbSI.SelectedItem, cbTypeMaterial.SelectedItem, Material.Materials))
+                {
+                    MessageBox.Show("объект  сохранен");
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show(EX.Message);
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using WPF_IS_19_02.View.ModelView;
 
@@ -102,6 +103,51 @@ namespace WPF_IS_19_02.View
             catch
             {
                 throw new Exception("Материал не найден  в бд");
+            }
+        }
+
+        internal static bool ChaneMateril(string name, string description, string minCount,
+         string packageCount,
+         string priceR,
+         object image,
+         object sI,
+         object typeMaterial , DB.Materials materials)
+        {
+            DB.dEntities entities = new DB.dEntities();
+
+
+            DB.Materials neWmaterials = entities.Materials.Find(materials.Id);
+
+            try
+            {
+                View.ModelView.Image im = image as View.ModelView.Image;
+                neWmaterials.ImagePath = @"/Image\" + im.NameImage;
+                neWmaterials.Name = name;
+                neWmaterials.Price = Convert.ToInt32(priceR);
+                neWmaterials.MinCount = Convert.ToInt32(minCount);
+                neWmaterials.CountPerPack = Convert.ToInt32(packageCount);
+                neWmaterials.Id_MaterialType = GetIdMaterialType(typeMaterial as string);
+                neWmaterials.Id_MaterialSI = GetIdMaterialSy(sI as string);
+                neWmaterials.Discriptions = description;
+            }
+            catch
+            {
+                throw new Exception("Ошибка входных параметров");
+            }
+
+            if (neWmaterials == null)
+            {
+                return false;
+            }
+            try
+            {
+                entities.Materials.AddOrUpdate(neWmaterials);
+                entities.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                throw new Exception("единицы измерения  не найдены  в бд");
             }
         }
     }
