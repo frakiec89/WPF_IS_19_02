@@ -24,7 +24,6 @@ namespace WPF_IS_19_02.View
         {
             InitializeComponent();
             this.Loaded += WindowAddMeterial_Loaded;
-            
         }
 
         private void WindowAddMeterial_Loaded(object sender, RoutedEventArgs e)
@@ -51,6 +50,71 @@ namespace WPF_IS_19_02.View
             View.WindowMaterilSklad windowMaterilSklad = new WindowMaterilSklad();
             windowMaterilSklad.Show();
             this.Close();
+        }
+
+        private void btAdd_Click(object sender, RoutedEventArgs e)
+        {
+            #region Валидация
+            if (string.IsNullOrWhiteSpace(  tbName.Text))
+            {
+                MessageBox.Show("Имя не заданно");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(tbPriceR.Text))
+            {
+                MessageBox.Show("Укажите цену");
+                return;
+            }
+
+            try
+            {
+                double p = Convert.ToDouble(tbPriceR.Text);
+                if(p<0)
+                {
+                    MessageBox.Show("Цена  не  может  быть  отрицательной");
+                    return;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Укажите правильный формат цены");
+                return;
+            }
+
+
+            if (string.IsNullOrWhiteSpace(tbPackageCount.Text))
+            {
+                MessageBox.Show("Укажите Кол-во  в пачке");
+                return;
+            }
+
+            try
+            {
+                int  count = Convert.ToInt32(tbPackageCount.Text);
+                if (count < 0)
+                {
+                    MessageBox.Show("кол-во  в пачке  не  может  быть  отрицательной");
+                    return;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Укажите правильный формат кол-ва в  пачке");
+                return;
+            }
+
+            if(cbSI.SelectedIndex<0)
+            {
+                MessageBox.Show("Выберете ед измерения");
+                return;
+            }
+
+
+
+            #endregion
+
+
         }
     }
 }

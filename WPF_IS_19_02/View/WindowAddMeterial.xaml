@@ -88,7 +88,7 @@
                 </ComboBox>
             </StackPanel>
 
-            <Button Margin="5" Background="{StaticResource br2}" x:Name="btAdd">Добавить в БД</Button>
+            <Button Click="btAdd_Click" Margin="5" Background="{StaticResource br2}" x:Name="btAdd">Добавить в БД</Button>
         </StackPanel>
     </Grid>
 </Window>
