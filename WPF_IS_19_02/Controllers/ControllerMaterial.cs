@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace WPF_IS_19_02.View
 {
-    internal class ControllerMaterial
+    partial class ControllerMaterial
     {
         public static List<View.ModelView.ViewMaterial> GetViewMaterial()
         {
@@ -29,6 +29,18 @@ namespace WPF_IS_19_02.View
             {
                 throw new Exception("Error db");
             }
+
+        }
+
+        internal static bool AddMateril(string name, string description , string minCount, 
+            string packageCount,
+            string priceR,
+            object image, 
+            object sI, 
+            object typeMaterial)
+        {
+           
+
 
         }
     }

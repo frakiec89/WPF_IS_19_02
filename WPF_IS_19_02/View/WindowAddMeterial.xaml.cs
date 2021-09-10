@@ -114,7 +114,17 @@ namespace WPF_IS_19_02.View
 
             #endregion
 
+           try
+           {
+                ControllerMaterial.AddMateril(tbName.Text, tbDescription.Text
+                    , tbMinCount.Text, tbPackageCount.Text, tbPriceR.Text, cbImage.SelectedItem,
+                    cbSI.SelectedItem, cbTypeMaterial.SelectedItem
+                    );
+           }
+           catch (Exception ex)
+           {
 
+           }
         }
     }
 }
