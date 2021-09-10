@@ -15,24 +15,21 @@ namespace WPF_IS_19_02.Controllers
         {
             string wanted_path = 
                 Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+
             wanted_path += @"\\Image";
 
             string[] allfolders = Directory.GetFiles(wanted_path); // список  файлов  в папке
 
-            List<string> allfoldersJPG = allfolders.ToList();
+            List<string> allfoldersJPG = allfolders.
+                Where(c=> (c.EndsWith(".jpg")) ||( c.EndsWith(".jpeg")) || (c.EndsWith(".png"))).ToList();
 
             List<View.ModelView.Image> images = new List<Image>();
 
             foreach (var item in allfoldersJPG)
             {
-                images.Add(new Image { ImagePath = item, NameImage = GetName(item) }); ;
+                images.Add(new Image { ImagePath = item, NameImage = Path.GetFileName(item) }); ;
             }
             return images;
-        }
-
-        private static string GetName(string item)
-        {
-            return Path.GetFileName(item);
         }
     }
 }
