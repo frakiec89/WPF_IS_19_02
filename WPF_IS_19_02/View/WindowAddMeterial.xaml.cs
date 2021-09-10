@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPF_IS_19_02.Controllers;
 
 namespace WPF_IS_19_02.View
 {
@@ -42,6 +43,7 @@ namespace WPF_IS_19_02.View
         {
             cbTypeMaterial.ItemsSource = ContrillerMaterial.GetMaterialComboBox();
             cbSI.ItemsSource = ContrillerSI.GetSIComboBox();
+            cbImage.ItemsSource = ControllerImage.GetImages();
         }
 
         private void btDn_Click(object sender, RoutedEventArgs e)

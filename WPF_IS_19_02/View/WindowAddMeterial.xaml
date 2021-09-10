@@ -69,7 +69,23 @@
 
             <StackPanel  Margin="5" Orientation="Horizontal">
                 <TextBlock Margin="5">Изображение</TextBlock>
-                <ComboBox Margin="5" Name="cbImage"></ComboBox>
+                <ComboBox Margin="5" Name="cbImage">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Border Grid.Column="0">
+                                    <Image Width="40" Height="40" Source="{Binding ImagePath}"/>
+                                </Border>
+                                <TextBlock Grid.Column="1" Margin="5" Text="{Binding NameImage}"></TextBlock>
+                            </Grid>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                    
+                </ComboBox>
             </StackPanel>
 
             <Button Margin="5" Background="{StaticResource br2}" x:Name="btAdd">Добавить в БД</Button>
