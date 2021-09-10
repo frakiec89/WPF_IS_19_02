@@ -93,6 +93,20 @@ namespace WPF_IS_19_02.View
             }
         }
 
+        internal static void Remove(DB.Materials materials)
+        {
+            try
+            {
+                DB.dEntities entities = new DB.dEntities();
+                entities.Materials.Remove(entities.Materials.Find(materials.Id));
+                entities.SaveChanges();
+            }
+            catch
+            {
+                throw new Exception("Удаление  не получилось");
+            }
+        }
+
         private static int GetIdMaterialType(string name)
         {
            try

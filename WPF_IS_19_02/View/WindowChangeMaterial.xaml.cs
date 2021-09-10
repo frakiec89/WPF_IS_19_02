@@ -79,5 +79,25 @@ namespace WPF_IS_19_02.View
                 MessageBox.Show(EX.Message);
             }
         }
+
+        private void btRemove_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if(MessageBox.Show("Вы уверены что  хотите удалить" , "Удалить  Объект?" ,MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    ControllerMaterial.Remove(Material.Materials);
+                    MessageBox.Show("Объект  удален");
+                }
+
+              
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show(EX.Message);
+            }
+
+           
+        }
     }
 }

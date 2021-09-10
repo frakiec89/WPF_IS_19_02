@@ -84,11 +84,11 @@
                             </Grid>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
-
                 </ComboBox>
             </StackPanel>
 
             <Button Click="btAdd_Click"  Margin="5" Background="{StaticResource br2}" x:Name="btAdd">Сохранить в БД</Button>
+            <Button Click="btRemove_Click"   Margin="5" Background="{StaticResource br2}" x:Name="btRemove">Удалить из БД</Button>
         </StackPanel>
     </Grid>
 </Window>
