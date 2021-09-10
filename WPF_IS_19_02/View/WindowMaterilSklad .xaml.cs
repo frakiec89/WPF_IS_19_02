@@ -60,7 +60,11 @@ namespace WPF_IS_19_02.View
                 return;
             }
             var material = sours.DataContext as View.ModelView.ViewMaterial;
-            MessageBox.Show(material.Materials.Id.ToString());
+            View.WindowChangeMaterial window = new WindowChangeMaterial(material);
+            window.Show();
+            this.Close();
+
+
         }
 
         private void Run(List<View.ModelView.ViewMaterial> materials)

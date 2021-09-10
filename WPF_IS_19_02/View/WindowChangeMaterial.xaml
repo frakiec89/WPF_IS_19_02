@@ -1,0 +1,94 @@
+﻿<Window x:Class="WPF_IS_19_02.View.WindowChangeMaterial"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_IS_19_02.View"
+        mc:Ignorable="d"
+     Title="Редактировать" MinHeight="500"  
+        MaxHeight="1000" MaxWidth="1000"
+        MinWidth="400"  
+        SizeToContent="WidthAndHeight"
+        Icon="/Image\Большая пачка.ico" 
+        FontFamily="Verdana" 
+        Background="{StaticResource br1}"
+        >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" HorizontalAlignment="Left">
+            <Button  Background="{StaticResource br2}"  Padding="5" Margin="10" x:Name="btDn"
+                     >
+                Назад
+            </Button>
+        </StackPanel>
+
+        <Image Margin="10" Width="50" Height="50" Source="/Image\Большая пачка.png"></Image>
+        <StackPanel Grid.Row="1" Grid.Column="1">
+
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <TextBlock Margin="5">Введите название материала</TextBlock>
+                <TextBox Background="{StaticResource br2}" MinWidth="100" Margin="5" x:Name="tbName"></TextBox>
+            </StackPanel>
+
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <TextBlock Margin="5">Подробное  описание</TextBlock>
+                <TextBox  TextWrapping="Wrap" AcceptsReturn="True"   Background="{StaticResource br2}" MinWidth="100" Margin="5" x:Name="tbDescription"></TextBox>
+            </StackPanel>
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <TextBlock Margin="5">Укажите цену</TextBlock>
+                <TextBox Background="{StaticResource br2}" MinWidth="100" Margin="5" x:Name="tbPriceR"></TextBox>
+                <TextBlock Margin="5">P</TextBlock>
+            </StackPanel>
+
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <TextBlock Margin="5">единица измерения</TextBlock>
+                <ComboBox Margin="5" Name="cbSI"></ComboBox>
+                <TextBlock Background="{StaticResource br2}" Margin="5"></TextBlock>
+            </StackPanel>
+
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <TextBlock Margin="5">Минимальное кол-во</TextBlock>
+                <TextBox  Background="{StaticResource br2}" MinWidth="100" Margin="5" x:Name="tbMinCount"></TextBox>
+                <TextBlock  Margin="5" ></TextBlock>
+            </StackPanel>
+
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <TextBlock Margin="5">Кол-во  в  упаковке</TextBlock>
+                <TextBox  Background="{StaticResource br2}" MinWidth="100" Margin="5" x:Name="tbPackageCount"></TextBox>
+                <TextBlock Margin="5"></TextBlock>
+            </StackPanel>
+
+            <StackPanel  Margin="5" Orientation="Horizontal">
+                <TextBlock Margin="5">Материал</TextBlock>
+                <ComboBox Margin="5" Name="cbTypeMaterial"></ComboBox>
+            </StackPanel>
+
+            <StackPanel  Margin="5" Orientation="Horizontal">
+                <TextBlock Margin="5">Изображение</TextBlock>
+                <ComboBox Margin="5" Name="cbImage">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Border Grid.Column="0">
+                                    <Image Width="40" Height="40" Source="{Binding ImagePath}"/>
+                                </Border>
+                                <TextBlock Grid.Column="1" Margin="5" Text="{Binding NameImage}"></TextBlock>
+                            </Grid>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+
+                </ComboBox>
+            </StackPanel>
+
+            <Button Click="btAdd_Click"  Margin="5" Background="{StaticResource br2}" x:Name="btAdd">Сохранить в БД</Button>
+        </StackPanel>
+    </Grid>
+</Window>
