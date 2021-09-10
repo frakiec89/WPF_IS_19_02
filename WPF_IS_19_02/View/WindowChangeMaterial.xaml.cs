@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPF_IS_19_02.Controllers;
 using WPF_IS_19_02.View.ModelView;
 
 namespace WPF_IS_19_02.View
@@ -34,7 +35,33 @@ namespace WPF_IS_19_02.View
             tbDescription.Text = Material.Materials.Discriptions;
             tbPriceR.Text = Material.Materials.Price.ToString();
 
-            
+            try
+            {
+                cbTypeMaterial.ItemsSource = ContrillerMaterial.GetMaterialComboBox();
+                cbSI.ItemsSource = ContrillerSI.GetSIComboBox();
+                cbImage.ItemsSource = ControllerImage.GetImages();
+
+                var sb = (cbSI.ItemsSource as List<string>).
+                     Single(x => x == material.Materials.MaterialSI.Name);
+
+                cbSI.SelectedIndex = cbSI.Items.IndexOf(sb) ;
+
+
+
+                var sbType = (cbTypeMaterial.ItemsSource as List<string>).
+                     Single(x => x == material.Materials.MaterialTypes.Name);
+
+                cbTypeMaterial.SelectedIndex = cbTypeMaterial.Items.IndexOf(sbType);
+
+                cbImage.SelectedIndex = 1;
+            }
+
+            catch
+            {
+                MessageBox.Show("Error db");
+            }
+
+
 
 
 
