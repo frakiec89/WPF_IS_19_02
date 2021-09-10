@@ -36,7 +36,7 @@
             
             <StackPanel Margin="5" Orientation="Horizontal">
                 <TextBlock Margin="5">Подробное  описание </TextBlock>
-                <TextBox Background="{StaticResource br2}" MinWidth="100" Margin="5" x:Name="tbDescription"></TextBox>
+                <TextBox  TextWrapping="Wrap" AcceptsReturn="True"   Background="{StaticResource br2}" MinWidth="100" Margin="5" x:Name="tbDescription"></TextBox>
             </StackPanel>
             <StackPanel Margin="5" Orientation="Horizontal">
                 <TextBlock Margin="5">Укажите цену</TextBlock>
