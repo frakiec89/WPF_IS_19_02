@@ -96,8 +96,13 @@ namespace WPF_IS_19_02.View
             {
                 MessageBox.Show(EX.Message);
             }
+        }
 
-           
+        private void btDn_Click(object sender, RoutedEventArgs e)
+        {
+            View.WindowMaterilSklad windowMaterilSklad = new WindowMaterilSklad();
+            windowMaterilSklad.Show();
+            this.Close();
         }
     }
 }

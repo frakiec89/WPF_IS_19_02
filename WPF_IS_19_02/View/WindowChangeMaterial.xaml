@@ -20,7 +20,7 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="0" HorizontalAlignment="Left">
-            <Button  Background="{StaticResource br2}"  Padding="5" Margin="10" x:Name="btDn"
+            <Button Click="btDn_Click"  Background="{StaticResource br2}"  Padding="5" Margin="10" x:Name="btDn"
                      >
                 Назад
             </Button>
