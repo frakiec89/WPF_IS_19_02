@@ -36,14 +36,6 @@ namespace WPF_IS_19_02
                 MessageBox.Show(ex.Message);
             }
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-            View.WindowAddMeterial windowAddMeterial = new WindowAddMeterial();
-            windowAddMeterial.Show();
-            this.Close();
-        }
     }
 
     public class Authentication
