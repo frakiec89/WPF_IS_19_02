@@ -53,7 +53,7 @@ namespace WPF_IS_19_02.View
 
                 cbTypeMaterial.SelectedIndex = cbTypeMaterial.Items.IndexOf(sbType);
 
-                cbImage.SelectedIndex = 1;
+                cbImage.SelectedIndex = GetIndexImage(material);
             }
 
             catch
@@ -61,6 +61,13 @@ namespace WPF_IS_19_02.View
                 MessageBox.Show("Error db");
             }
 
+        }
+
+        private int GetIndexImage(ViewMaterial material)
+        {
+            var vs = cbImage.ItemsSource as List<ModelView.Image>;
+            var s = vs.Single(x => material.Image.Contains(x.NameImage));
+            return cbImage.Items.IndexOf(s);
         }
 
         private void btAdd_Click(object sender, RoutedEventArgs e)
