@@ -168,7 +168,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Receipts_Materials">
-          <End Role="Materials" Type="Self.Materials" Multiplicity="1" />
+          <End Role="Materials" Type="Self.Materials" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Receipts" Type="Self.Receipts" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Materials">

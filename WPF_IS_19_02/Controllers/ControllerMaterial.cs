@@ -107,6 +107,26 @@ namespace WPF_IS_19_02.View
             }
         }
 
+        internal static bool ISMaterial(ViewMaterial material)
+        {
+            try
+            {
+                DB.dEntities entities = new DB.dEntities();
+              if ( entities.Receipts.Where( x=>x.Id_Material == material.Materials.Id).ToList().Count>0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                throw new Exception("Материал не найден  в бд");
+            }
+        }
+
         private static int GetIdMaterialType(string name)
         {
            try

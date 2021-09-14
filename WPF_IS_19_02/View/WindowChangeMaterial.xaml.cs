@@ -91,11 +91,27 @@ namespace WPF_IS_19_02.View
         {
             try
             {
-                if(MessageBox.Show("Вы уверены что  хотите удалить" , "Удалить  Объект?" ,MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                if (ControllerMaterial.ISMaterial(Material))
                 {
-                    ControllerMaterial.Remove(Material.Materials);
-                    MessageBox.Show("Объект  удален");
+                    if (MessageBox.Show("На складе есть " +
+                  " поставки - вы  уверены что хотите " +
+                  " удалить  материал и  поставки", "Удалить  Объект?", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    {
+                        ControllerMaterial.Remove(Material.Materials);
+                        MessageBox.Show("Объект  удален");
+                    }
                 }
+                else
+                {
+                    if (MessageBox.Show("Вы уверены что  хотите удалить", "Удалить  Объект?", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    {
+                        ControllerMaterial.Remove(Material.Materials);
+                        MessageBox.Show("Объект  удален");
+                    }
+                }
+
+
+               
 
               
             }
