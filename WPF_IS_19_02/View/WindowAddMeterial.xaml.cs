@@ -133,5 +133,12 @@ namespace WPF_IS_19_02.View
                 MessageBox.Show("Ошибка добавления в  бд");
             }
         }
+
+        private void btAddmaterrial_Click(object sender, RoutedEventArgs e)
+        {
+            View.WindowReceipts sklad = new WindowReceipts();
+            sklad.Show();
+            this.Close();
+        }
     }
 }

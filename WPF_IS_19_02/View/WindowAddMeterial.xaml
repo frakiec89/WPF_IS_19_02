@@ -89,6 +89,8 @@
             </StackPanel>
 
             <Button Click="btAdd_Click" Margin="5" Background="{StaticResource br2}" x:Name="btAdd">Добавить в БД</Button>
+            <Label Margin="10">Добавить материал на склад можно  в отдельном окне </Label>
+            <Button x:Name="btAddmaterrial" Content="Добавить материал на склад" Click="btAddmaterrial_Click"></Button>
         </StackPanel>
     </Grid>
 </Window>
