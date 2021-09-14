@@ -1,0 +1,67 @@
+﻿<Window x:Class="WPF_IS_19_02.View.WindowProvider"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_IS_19_02.View"
+        mc:Ignorable="d"
+        Title="Задача 3(Рога  и к копыта)" MinHeight="300"  
+        MaxHeight="500" MaxWidth="700"
+        MinWidth="400"  
+        SizeToContent="WidthAndHeight"
+        Icon="/Image\Большая пачка.ico" 
+        FontFamily="Verdana" 
+        Background="{StaticResource br1}"
+        >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" HorizontalAlignment="Left">
+            <Button  Background="{StaticResource br2}"  Padding="5" Margin="10" x:Name="btDn"
+                     Click="btDn_Click" >
+                Назад
+            </Button>
+        </StackPanel>
+
+        <Image Margin="10" Width="50" Height="50" Source="/Image\Большая пачка.png"></Image>
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <Label Margin="5" >Название компании</Label>
+                <TextBox Margin="5"  MinWidth="150"  x:Name="tbName"></TextBox>
+            </StackPanel>
+
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <Label Margin="5" >ИНН</Label>
+                <TextBox Margin="5"  MinWidth="150"  x:Name="tbINN"></TextBox>
+            </StackPanel>
+
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <Label Margin="5" >Позиция в рейтинге</Label>
+                <ComboBox Margin="5" MinWidth="50" Name="cbRating" ></ComboBox>
+            </StackPanel>
+            
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <Label Margin="5" >Вид компании</Label>
+                <ComboBox Margin="5" MinWidth="50" Name="cbType" ></ComboBox>
+            </StackPanel>
+
+
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <Label Margin="5" >Дата начала работы</Label>
+                <DatePicker x:Name="calendarDateStartWork"></DatePicker>
+            </StackPanel>
+
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <Button Margin="5" MinHeight="30" x:Name="btAdd" Click="btAdd_Click">Добавить  в БД</Button>
+            </StackPanel>
+
+
+        </StackPanel>
+        
+        
+        
+    </Grid>
+</Window>

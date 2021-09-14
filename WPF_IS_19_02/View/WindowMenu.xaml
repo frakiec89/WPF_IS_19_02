@@ -31,13 +31,13 @@
                     Padding="5"  Margin="5"  Click="btMaterialSklad_Click">
                 Материалы  на  складе
             </Button>
-            
-            
-            
-            
-            <Button Background="{StaticResource br2}" Padding="5" Margin="5" x:Name="bt2" Click="bt2_Click">2</Button>
-            <Button Background="{StaticResource br2}" Padding="5" Margin="5" x:Name="bt3" Click="bt3_Click">3</Button>
-            <Button Background="{StaticResource br2}" Padding="5"  Margin="5" x:Name="bt4" Click="bt4_Click">4</Button>
+
+
+
+
+            <Button Background="{StaticResource br2}" Padding="5" Margin="5" x:Name="bt2" Click="bt2_Click">Добавить картинку</Button>
+            <Button Background="{StaticResource br2}" Padding="5" Margin="5" x:Name="bt3" Click="bt3_Click">Добавить поставщика</Button>
+            <Button Background="{StaticResource br2}" Padding="5"  Margin="5" x:Name="bt4" Click="bt4_Click">Добавить  материал на склад</Button>
             <Image Margin="10" Width="50" Height="50" Source="/Image\Большая пачка.png"></Image>
         </StackPanel>
     </Grid>

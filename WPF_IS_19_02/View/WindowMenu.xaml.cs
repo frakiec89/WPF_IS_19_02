@@ -44,14 +44,14 @@ namespace WPF_IS_19_02.View
 
         private void bt3_Click(object sender, RoutedEventArgs e)
         {
-            View.Window3 window = new Window3();
+            View.WindowProvider window = new WindowProvider();
             window.Show();
             this.Close();
         }
 
         private void bt4_Click(object sender, RoutedEventArgs e)
         {
-            View.Window4 window = new Window4();
+            View.WindowReceipts window = new WindowReceipts();
             window.Show();
             this.Close();
         }

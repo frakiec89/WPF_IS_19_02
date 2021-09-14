@@ -111,8 +111,11 @@
     <Compile Include="DB\User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ConrtrollersTypeCompany.cs" />
     <Compile Include="View\ContrillerMaterial.cs" />
     <Compile Include="View\ContrillerSI.cs" />
+    <Compile Include="Controllers\ControlerProvider.cs" />
+    <Compile Include="Controllers\ControlerReceipts.cs" />
     <Compile Include="View\ModelView\Image.cs" />
     <Compile Include="View\ModelView\ViewMaterial.cs" />
     <Compile Include="View\WindowAddMeterial.xaml.cs">
@@ -127,11 +130,11 @@
     <Compile Include="View\AddImage.xaml.cs">
       <DependentUpon>AddImage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Window3.xaml.cs">
-      <DependentUpon>Window3.xaml</DependentUpon>
+    <Compile Include="View\WindowProvader.xaml.cs">
+      <DependentUpon>WindowProvader.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Window4.xaml.cs">
-      <DependentUpon>Window4.xaml</DependentUpon>
+    <Compile Include="View\WindowReceipts.xaml.cs">
+      <DependentUpon>WindowReceipts.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\WindowMenu.xaml.cs">
       <DependentUpon>WindowMenu.xaml</DependentUpon>
@@ -179,11 +182,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Window3.xaml">
+    <Page Include="View\WindowProvader.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Window4.xaml">
+    <Page Include="View\WindowReceipts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
