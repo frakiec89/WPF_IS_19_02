@@ -44,7 +44,7 @@ namespace WPF_IS_19_02
         {
             try
             {
-                DB.dEntities entities = new DB.dEntities();
+                DB.dEntities entities = App.dEntities;
                 var user = entities.User.Single(x => x.Login == login && x.Password == password);
                 if (user != null)
                 {

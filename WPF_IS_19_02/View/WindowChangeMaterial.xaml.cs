@@ -29,14 +29,15 @@ namespace WPF_IS_19_02.View
 
         public WindowChangeMaterial(ViewMaterial material) :this()
         {
-            Material = material;
-            tbName.Text = Material.Materials.Name;
-            tbMinCount.Text = Material.Materials.MinCount.ToString();
-            tbDescription.Text = Material.Materials.Discriptions;
-            tbPriceR.Text = Material.Materials.Price.ToString();
-
             try
             {
+                Material = material;
+                tbName.Text = Material.Materials.Name;
+                tbMinCount.Text = Material.Materials.MinCount.ToString();
+                tbDescription.Text = Material.Materials.Discriptions;
+                tbPriceR.Text = Material.Materials.Price.ToString();
+                tbPackageCount.Text = material.Materials.CountPerPack.ToString();
+
                 cbTypeMaterial.ItemsSource = ContrillerMaterial.GetMaterialComboBox();
                 cbSI.ItemsSource = ContrillerSI.GetSIComboBox();
                 cbImage.ItemsSource = ControllerImage.GetImages();
@@ -45,8 +46,6 @@ namespace WPF_IS_19_02.View
                      Single(x => x == material.Materials.MaterialSI.Name);
 
                 cbSI.SelectedIndex = cbSI.Items.IndexOf(sb) ;
-
-
 
                 var sbType = (cbTypeMaterial.ItemsSource as List<string>).
                      Single(x => x == material.Materials.MaterialTypes.Name);
@@ -109,11 +108,6 @@ namespace WPF_IS_19_02.View
                         MessageBox.Show("Объект  удален");
                     }
                 }
-
-
-               
-
-              
             }
             catch (Exception EX)
             {

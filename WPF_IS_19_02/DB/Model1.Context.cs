@@ -14,134 +14,281 @@ namespace WPF_IS_19_02.DB
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
     using System.Linq;
-    
-    public partial class dEntities : DbContext
+    using System.Collections.Generic;
+
+    public partial class dEntities
     {
         public dEntities()
-            : base("name=dEntities")
         {
         }
-    
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+
+        public   List<MaterialSI> MaterialSI { get; set; } = new List<MaterialSI>()
         {
-            throw new UnintentionalCodeFirstException();
-        }
-    
-        public virtual DbSet<MaterialColors> MaterialColors { get; set; }
-        public virtual DbSet<Materials> Materials { get; set; }
-        public virtual DbSet<MaterialSI> MaterialSI { get; set; }
-        public virtual DbSet<MaterialStandarts> MaterialStandarts { get; set; }
-        public virtual DbSet<MaterialTypes> MaterialTypes { get; set; }
-        public virtual DbSet<Receipts> Receipts { get; set; }
-        public virtual DbSet<Skladi> Skladi { get; set; }
-        public virtual DbSet<Suppliers> Suppliers { get; set; }
-        public virtual DbSet<SupplierTypes> SupplierTypes { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<TypeUSer> TypeUSer { get; set; }
-        public virtual DbSet<User> User { get; set; }
-        public virtual DbSet<Logs> Logs { get; set; }
-    
-        public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+            new MaterialSI { Id = 1 , Name = "кг"} ,
+            new MaterialSI { Id = 2 , Name = "м"} ,
+            new MaterialSI { Id = 3 , Name = "см"} ,
+        };
+
+        public virtual List<MaterialColors> MaterialColors { get; set; } = new List<MaterialColors>();
+        public virtual List<Materials> Materials { get; set; } = new List<Materials>()
+
         {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var versionParameter = version.HasValue ?
-                new ObjectParameter("version", version) :
-                new ObjectParameter("version", typeof(int));
-    
-            var definitionParameter = definition != null ?
-                new ObjectParameter("definition", definition) :
-                new ObjectParameter("definition", typeof(byte[]));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
-        }
-    
-        public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+            new Materials()
+            {  Name ="Краска цветной 1x3" , Id = 21 , CountPerPack = 1 , Discriptions = "No",
+                  MaterialColors = new MaterialColors () { Id = 2 , Name = "цветной" } , Id_MaterialColor=2,
+                  Id_MaterialSI = 1 , MaterialSI =   new MaterialSI { Id = 1 , Name = "кг"}   ,  Price = 100 ,
+                  MinCount = 2 , Id_MaterialStandart = 2 , MaterialStandarts = new MaterialStandarts()
+                  {
+                      Id = 2 , Name ="1x3"
+                  } , Id_MaterialType = 1 , MaterialTypes = new MaterialTypes(){ Id=1, Name = "Опилки"} ,
+                   ImagePath= $@"/Image\image_1.jpeg" 
+            },
+
+             new Materials()
+            {   Name ="Нить белый 2x3" , Id = 1 , CountPerPack = 2 , Discriptions = "No",
+                  MaterialColors = new MaterialColors () { Id = 1 , Name = "белый" } , Id_MaterialColor=1,
+                  Id_MaterialSI = 4 , MaterialSI = new MaterialSI(){ Id=4,   Name = "м"} ,  Price = 25 ,
+                  MinCount = 2 , Id_MaterialStandart = 2 , MaterialStandarts = new MaterialStandarts()
+                  {
+                      Id = 1 , Name ="2x3"
+                  } , Id_MaterialType = 1 , MaterialTypes = new MaterialTypes(){ Id=2, Name = "Дерево"} ,
+                  
+            },
+
+              new Materials()
+            {  Name ="Гранулы синий 3x0" , Id = 2 , CountPerPack = 1 , Discriptions = "No",
+                  MaterialColors = new MaterialColors () { Id = 2 , Name = "синий" } , Id_MaterialColor=2,
+                  Id_MaterialSI = 4 , MaterialSI = new MaterialSI(){ Id=4,   Name = "кг"} ,  Price = 100 ,
+                  MinCount = 2 , Id_MaterialStandart = 2 , MaterialStandarts = new MaterialStandarts()
+                  {
+                      Id = 2 , Name ="3x0"
+                  } , Id_MaterialType = 1 , MaterialTypes = new MaterialTypes(){ Id=1, Name = "Дерево"} ,
+                   ImagePath= $@"/Image\image_6.jpeg"
+            },
+
+               new Materials()
+            {  Name ="Краска цветной 1x3" , Id = 3 , CountPerPack = 1 , Discriptions = "No",
+                  MaterialColors = new MaterialColors () { Id = 2 , Name = "цветной" } , Id_MaterialColor=2,
+                  Id_MaterialSI = 4 , MaterialSI = new MaterialSI(){ Id=4,   Name = "кг"} ,  Price = 10 ,
+                  MinCount = 2 , Id_MaterialStandart = 2 , MaterialStandarts = new MaterialStandarts()
+                  {
+                      Id = 2 , Name ="1x3"
+                  } , Id_MaterialType = 1 , MaterialTypes = new MaterialTypes(){ Id=1, Name = "Опилки"} ,
+                   ImagePath= $@"/Image\image_5.jpeg"
+            },
+
+                new Materials()
+            {  Name ="Краска цветной 1x3" , Id = 4 , CountPerPack = 1 , Discriptions = "No",
+                  MaterialColors = new MaterialColors () { Id = 2 , Name = "цветной" } , Id_MaterialColor=2,
+                  Id_MaterialSI = 4 , MaterialSI = new MaterialSI(){ Id=4,   Name = "кг"} ,  Price = 100 ,
+                  MinCount = 2 , Id_MaterialStandart = 2 , MaterialStandarts = new MaterialStandarts()
+                  {
+                      Id = 2 , Name ="1x3"
+                  } , Id_MaterialType = 1 , MaterialTypes = new MaterialTypes(){ Id=1, Name = "Опилки"} ,
+                   ImagePath= $@"/Image\image_1.jpeg"
+            },
+
+
+                 new Materials()
+            {  Name ="Гранулы цветной 3x2" , Id = 5 , CountPerPack = 1 , Discriptions = "No",
+                  MaterialColors = new MaterialColors () { Id = 2 , Name = "цветной" } , Id_MaterialColor=2,
+                  Id_MaterialSI = 4 , MaterialSI = new MaterialSI(){ Id=4,   Name = "кг"} ,  Price = 100 ,
+                  MinCount = 2 , Id_MaterialStandart = 2 , MaterialStandarts = new MaterialStandarts()
+                  {
+                      Id = 2 , Name ="1x3"
+                  } , Id_MaterialType = 1 , MaterialTypes = new MaterialTypes(){ Id=1, Name = "Опилки"} ,
+                   ImagePath= $@"/Image\image_1.jpeg"
+            },
+
+                  new Materials()
+            {  Name ="Нить белый 2x0" , Id = 6 , CountPerPack = 1 , Discriptions = "No",
+                  MaterialColors = new MaterialColors () { Id = 2 , Name = "белый" } , Id_MaterialColor=2,
+                  Id_MaterialSI = 4 , MaterialSI = new MaterialSI(){ Id=4,   Name = "см"} ,  Price = 100 ,
+                  MinCount = 2 , Id_MaterialStandart = 2 , MaterialStandarts = new MaterialStandarts()
+                  {
+                      Id = 2 , Name ="1x3"
+                  } , Id_MaterialType = 1 , MaterialTypes = new MaterialTypes(){ Id=1, Name = "Опилки"} ,
+                   ImagePath= $@"/materials\image_9.jpeg"
+            },
+
+
+                   new Materials()
+            {  Name ="Нить зеленый 0x0" , Id = 7 , CountPerPack = 1 , Discriptions = "No",
+                  MaterialColors = new MaterialColors () { Id = 2 , Name = "цветной" } , Id_MaterialColor=2,
+                  Id_MaterialSI = 4 , MaterialSI = new MaterialSI(){ Id=4,   Name = "кг"} ,  Price = 100 ,
+                  MinCount = 2 , Id_MaterialStandart = 2 , MaterialStandarts = new MaterialStandarts()
+                  {
+                      Id = 2 , Name ="1x3"
+                  } , Id_MaterialType = 1 , MaterialTypes = new MaterialTypes(){ Id=1, Name = "Опилки"} ,
+                    
+            },
+
+                    new Materials()
+            {  Name ="Краска цветной 0x3" , Id = 8 , CountPerPack = 1 , Discriptions = "No",
+                  MaterialColors = new MaterialColors () { Id = 2 , Name = "цветной" } , Id_MaterialColor=2,
+                  Id_MaterialSI = 4 , MaterialSI = new MaterialSI(){ Id=4,   Name = "кг"} ,  Price = 500 ,
+                  MinCount = 2 , Id_MaterialStandart = 2 , MaterialStandarts = new MaterialStandarts()
+                  {
+                      Id = 2 , Name ="1x3"
+                  } , Id_MaterialType = 1 , MaterialTypes = new MaterialTypes(){ Id=1, Name = "дерево"} ,
+                   ImagePath= $@"/Image\image_2.jpeg"
+            },
+
+                     new Materials()
+            {  Name ="Краска цветной 1x3" , Id = 9 , CountPerPack = 1 , Discriptions = "No",
+                  MaterialColors = new MaterialColors () { Id = 2 , Name = "цветной" } , Id_MaterialColor=2,
+                  Id_MaterialSI = 4 , MaterialSI = new MaterialSI(){ Id=4,   Name = "кг"} ,  Price = 100 ,
+                  MinCount = 2 , Id_MaterialStandart = 2 , MaterialStandarts = new MaterialStandarts()
+                  {
+                      Id = 2 , Name ="1x3"
+                  } , Id_MaterialType = 1 , MaterialTypes = new MaterialTypes(){ Id=1, Name = "Опилки"} ,
+                   ImagePath= $@"/Image\image_4.jpeg"
+            },
+
+                      new Materials()
+            {  Name ="Краска цветной 1x3" , Id = 10 , CountPerPack = 1 , Discriptions = "No",
+                  MaterialColors = new MaterialColors () { Id = 2 , Name = "цветной" } , Id_MaterialColor=2,
+                  Id_MaterialSI = 4 , MaterialSI = new MaterialSI(){ Id=4,   Name = "кг"} ,  Price = 100 ,
+                  MinCount = 2 , Id_MaterialStandart = 2 , MaterialStandarts = new MaterialStandarts()
+                  {
+                      Id = 2 , Name ="1x3"
+                  } , Id_MaterialType = 1 , MaterialTypes = new MaterialTypes(){ Id=1, Name = "Опилки"} ,
+                   ImagePath= $@"/Image\image_5.jpeg"
+            },
+
+
+                       new Materials()
+            {  Name ="Краска цветной 1x3" , Id = 11 , CountPerPack = 1 , Discriptions = "No",
+                  MaterialColors = new MaterialColors () { Id = 2 , Name = "цветной" } , Id_MaterialColor=2,
+                  Id_MaterialSI = 4 , MaterialSI = new MaterialSI(){ Id=4,   Name = "кг"} ,  Price = 100 ,
+                  MinCount = 2 , Id_MaterialStandart = 2 , MaterialStandarts = new MaterialStandarts()
+                  {
+                      Id = 2 , Name ="1x3"
+                  } , Id_MaterialType = 1 , MaterialTypes = new MaterialTypes(){ Id=1, Name = "Опилки"} ,
+                   ImagePath= $@"/Image\image_6.jpeg"
+            },
+
+                        new Materials()
+            {  Name ="Краска цветной 1x3" , Id = 14 , CountPerPack = 1 , Discriptions = "No",
+                  MaterialColors = new MaterialColors () { Id = 2 , Name = "цветной" } , Id_MaterialColor=2,
+                  Id_MaterialSI = 4 , MaterialSI = new MaterialSI(){ Id=4,   Name = "кг"} ,  Price = 100 ,
+                  MinCount = 2 , Id_MaterialStandart = 2 , MaterialStandarts = new MaterialStandarts()
+                  {
+                      Id = 2 , Name ="1x3"
+                  } , Id_MaterialType = 1 , MaterialTypes = new MaterialTypes(){ Id=1, Name = "Опилки"} ,
+                   ImagePath= $@"/Image\image_7.jpeg"
+            },
+
+                         new Materials()
+            {  Name ="Краска цветной 1x3" , Id = 12 , CountPerPack = 1 , Discriptions = "No",
+                  MaterialColors = new MaterialColors () { Id = 2 , Name = "цветной" } , Id_MaterialColor=2,
+                  Id_MaterialSI = 4 , MaterialSI = new MaterialSI(){ Id=4,   Name = "кг"} ,  Price = 100 ,
+                  MinCount = 2 , Id_MaterialStandart = 2 , MaterialStandarts = new MaterialStandarts()
+                  {
+                      Id = 2 , Name ="1x3"
+                  } , Id_MaterialType = 1 , MaterialTypes = new MaterialTypes(){ Id=1, Name = "Опилки"} ,
+                   ImagePath= $@"/Image\image_8.jpeg"
+            },
+
+                          new Materials()
+            {  Name ="Краска цветной 1x3" , Id = 13 , CountPerPack = 1 , Discriptions = "No",
+                  MaterialColors = new MaterialColors () { Id = 2 , Name = "цветной" } , Id_MaterialColor=2,
+                  Id_MaterialSI = 4 , MaterialSI = new MaterialSI(){ Id=4,   Name = "кг"} ,  Price = 100 ,
+                  MinCount = 2 , Id_MaterialStandart = 2 , MaterialStandarts = new MaterialStandarts()
+                  {
+                      Id = 2 , Name ="1x3"
+                  } , Id_MaterialType = 1 , MaterialTypes = new MaterialTypes(){ Id=1, Name = "Опилки"} ,
+                   ImagePath= $@"/Image\image_9.jpeg"
+            },
+
+                           new Materials()
+            {  Name ="Краска цветной 1x3" , Id = 17 , CountPerPack = 1 , Discriptions = "No",
+                  MaterialColors = new MaterialColors () { Id = 2 , Name = "цветной" } , Id_MaterialColor=2,
+                  Id_MaterialSI = 4 , MaterialSI = new MaterialSI(){ Id=4,   Name = "кг"} ,  Price = 100 ,
+                  MinCount = 2 , Id_MaterialStandart = 2 , MaterialStandarts = new MaterialStandarts()
+                  {
+                      Id = 2 , Name ="1x3"
+                  } , Id_MaterialType = 1 , MaterialTypes = new MaterialTypes(){ Id=1, Name = "Опилки"} ,
+                   ImagePath= $@"/Image\image_10.jpeg"
+            },
+
+
+                            new Materials()
+            {  Name ="Краска цветной 1x3" , Id = 19 , CountPerPack = 1 , Discriptions = "No",
+                  MaterialColors = new MaterialColors () { Id = 2 , Name = "цветной" } , Id_MaterialColor=2,
+                  Id_MaterialSI = 4 , MaterialSI = new MaterialSI(){ Id=4,   Name = "кг"} ,  Price = 100 ,
+                  MinCount = 2 , Id_MaterialStandart = 2 , MaterialStandarts = new MaterialStandarts()
+                  {
+                      Id = 2 , Name ="1x3"
+                  } , Id_MaterialType = 1 , MaterialTypes = new MaterialTypes(){ Id=1, Name = "Опилки"} ,
+                   ImagePath= $@"/Image\image_15.jpeg"
+            },
+
+                             new Materials()
+            {  Name ="Краска цветной 1x3" , Id = 20 , CountPerPack = 1 , Discriptions = "No",
+                  MaterialColors = new MaterialColors () { Id = 2 , Name = "цветной" } , Id_MaterialColor=2,
+                  Id_MaterialSI = 4 , MaterialSI = new MaterialSI(){ Id=4,   Name = "кг"} ,  Price = 100 ,
+                  MinCount = 2 , Id_MaterialStandart = 2 , MaterialStandarts = new MaterialStandarts()
+                  {
+                      Id = 2 , Name ="1x3"
+                  } , Id_MaterialType = 1 , MaterialTypes = new MaterialTypes(){ Id=1, Name = "Опилки"} ,
+                   ImagePath= $@"/Image\image_11.jpeg"
+            },
+        };
+        
+
+        public virtual List<MaterialStandarts> MaterialStandarts { get; set; } = new List<MaterialStandarts>();
+        public virtual List<MaterialTypes> MaterialTypes { get; set; } = new List<MaterialTypes>()
         {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var versionParameter = version.HasValue ?
-                new ObjectParameter("version", version) :
-                new ObjectParameter("version", typeof(int));
-    
-            var definitionParameter = definition != null ?
-                new ObjectParameter("definition", definition) :
-                new ObjectParameter("definition", typeof(byte[]));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
-        }
-    
-        public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
+            new MaterialTypes (){ Id = 1 , Name ="Дерево" },
+              new MaterialTypes (){ Id = 2 , Name ="Опилки" }
+        };
+        public virtual List<Receipts> Receipts { get; set; } = new List<Receipts>()
         {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
+            new Receipts ()
+            { 
+              Id_Material = 1 , Materials = new Materials{  Id =1} , Suppliers = new Suppliers(){ Name = "Компания 1"  }
+            , Id_Sklad = 1 , Id = 1 , MaterialsCount = 5 
+            } ,
+             new Receipts ()
+            {
+              Id_Material = 2 , Materials = new Materials{  Id =2} , Suppliers = new Suppliers(){ Name = "Компания 2"  }
+            , Id_Sklad = 1 , Id = 2 , MaterialsCount = 10
+            }
+             , new Receipts ()
+            {
+              Id_Material = 2 , Materials = new Materials{  Id =2} , Suppliers = new Suppliers(){ Name = "Компания 1"  }
+            , Id_Sklad = 1 , Id = 3 , MaterialsCount = 15
+            }
+        };
+        public virtual List<Skladi> Skladi { get; set; } = new List<Skladi>();
+        public virtual List<Suppliers> Suppliers { get; set; } = new List<Suppliers>()
         {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
+            new Suppliers(){ Name = "Компания 1"  , Id = 1} ,    new Suppliers(){ Name = "Компания 2"  , Id = 2},
+           new Suppliers(){ Name = "Компания 3"  , Id = 3} ,    new Suppliers(){ Name = "Компания 4"  , Id = 4},
+        };
+        public virtual List<SupplierTypes> SupplierTypes { get; set; } = new List<SupplierTypes>()
         {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
+            new SupplierTypes(){ Id=1 , Name= "OOO" } , new SupplierTypes(){ Name="ЗАО" , Id = 2}
+        };
+        public virtual List<sysdiagrams> sysdiagrams { get; set; }
+        public virtual List<TypeUSer> TypeUSer { get; set; } = new List<TypeUSer>();
+        public virtual List<User> User { get; set; } = new List<User>()
         {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var new_diagramnameParameter = new_diagramname != null ?
-                new ObjectParameter("new_diagramname", new_diagramname) :
-                new ObjectParameter("new_diagramname", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
-        }
-    
-        public virtual int sp_upgraddiagrams()
+            new User () { IdUser = 1 , Login = "Frakiec89" , Password = "123" , Name = "Ахтямов"
+             , Type=1 , TypeUSer = new TypeUSer(){ Name="admin" , IdType = 1}
+            } ,
+            new User () { IdUser = 2 , Login = "User" , Password = "123" , Name = "User"
+             , Type=2 , TypeUSer = new TypeUSer(){ Name="User" , IdType = 2}
+            }
+        };
+        public virtual List<Logs> Logs { get; set; } = new List<Logs>();
+
+        public int   SaveChanges()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+            return new Random().Next(0, 10);
         }
+
+
     }
 }

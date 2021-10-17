@@ -14,12 +14,7 @@ namespace WPF_IS_19_02.DB
     
     public partial class Materials
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Materials()
-        {
-            this.Receipts = new HashSet<Receipts>();
-        }
-    
+       
         public int Id { get; set; }
         public int Id_MaterialType { get; set; }
         public int Id_MaterialColor { get; set; }

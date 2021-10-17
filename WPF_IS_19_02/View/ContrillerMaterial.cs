@@ -13,7 +13,7 @@ namespace WPF_IS_19_02.View
             List<string> types = new List<string>();
             try
             {
-                DB.dEntities entities = new DB.dEntities() ;
+                DB.dEntities entities = App.dEntities;
                 types = entities.MaterialTypes.Select(x => x.Name).ToList();
                 ;
                 types.OrderBy(x=>x);
@@ -32,7 +32,7 @@ namespace WPF_IS_19_02.View
             List<string> types = new List<string>();
             try
             {
-                DB.dEntities entities = new DB.dEntities();
+                DB.dEntities entities = App.dEntities;
                 types = entities.MaterialTypes.Select(x => x.Name).ToList();
                 ;
                 types.OrderBy(x => x);

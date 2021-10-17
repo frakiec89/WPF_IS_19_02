@@ -15,8 +15,8 @@ namespace WPF_IS_19_02.View
         {
            try
            {
-                DB.dEntities entities = new DB.dEntities();
-               return entities.MaterialSI.Select(x => x.Name).OrderBy(x=>x).ToList();
+                DB.dEntities entities = App.dEntities;
+                return entities.MaterialSI.Select(x => x.Name).OrderBy(x=>x).ToList();
            }
             catch
            {

@@ -21,7 +21,7 @@ namespace WPF_IS_19_02.View
                 }
 
 
-                DB.dEntities entities = new DB.dEntities();
+                DB.dEntities entities = App.dEntities;
                 entities.Suppliers.Add(prov);
                 entities.SaveChanges();
             }
@@ -36,7 +36,7 @@ namespace WPF_IS_19_02.View
         {
             try
             {
-                DB.dEntities entities = new DB.dEntities();
+                DB.dEntities entities = App.dEntities;
                 return entities.Suppliers.ToList();
              
             }

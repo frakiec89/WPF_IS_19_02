@@ -11,7 +11,7 @@ namespace WPF_IS_19_02.View
         {
             try
             {
-                DB.dEntities entities = new DB.dEntities();
+                DB.dEntities entities = App.dEntities;
                 return entities.SupplierTypes.Select(x=>x.Name).ToList();
             }
             catch
@@ -25,7 +25,7 @@ namespace WPF_IS_19_02.View
         {
             try
             {
-                DB.dEntities entities = new DB.dEntities();
+                DB.dEntities entities = App.dEntities;
                 return entities.SupplierTypes.Single(x => x.Name == typeProvider).Id;
             }
             catch

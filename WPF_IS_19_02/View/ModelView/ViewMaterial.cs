@@ -21,13 +21,18 @@ namespace WPF_IS_19_02.View.ModelView
 
         public ViewMaterial(DB.Materials materials)
         {
-
             Materials = materials;
-
             Image = string.IsNullOrWhiteSpace(materials.ImagePath) ? @"/Image\NoImage.jpg" : materials.ImagePath;
 
-
-            NameEndType = $" {materials.MaterialTypes.Name} | {materials.Name}";
+            if (materials.MaterialTypes != null)
+            {
+                NameEndType = $" {materials.MaterialTypes.Name} | {materials.Name}";
+            }
+            else
+            {
+                NameEndType = $" fff | ffffff";
+            }
+           
             MinCol = $"Минимальное  количество {materials.MinCount} шт.";
             Ostatok = GetOstatoc(materials);
             Providers = GetProviders(materials);
@@ -37,7 +42,7 @@ namespace WPF_IS_19_02.View.ModelView
         {
             try
             {
-                DB.dEntities entities = new dEntities();
+                DB.dEntities entities = App.dEntities;
                 var s = entities.Receipts.Where(x => x.Id_Material == materials.Id).ToList();
                
                 if (s == null) return "Поставщиков  нет";
@@ -81,7 +86,7 @@ namespace WPF_IS_19_02.View.ModelView
         {
             try
             {
-                DB.dEntities entities = new dEntities();
+                DB.dEntities entities = App.dEntities;
                 var s = entities.Receipts.Where(x => x.Id_Material == materials.Id).Sum(x => x.MaterialsCount);
                 if (s == null) return "Товара на складе нет";
 

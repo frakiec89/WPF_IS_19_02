@@ -14,7 +14,7 @@ namespace WPF_IS_19_02.View
                 receipts.Id_Supplier = provider.Id;
                 receipts.MaterialsCount = count;
 
-                DB.dEntities entities = new DB.dEntities();
+                DB.dEntities entities = App.dEntities;
                 entities.Receipts.Add(receipts);
                 entities.SaveChanges();
             }

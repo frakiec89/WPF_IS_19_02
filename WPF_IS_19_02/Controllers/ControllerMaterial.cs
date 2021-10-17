@@ -14,7 +14,7 @@ namespace WPF_IS_19_02.View
 
             try
             {
-                DB.dEntities entities = new DB.dEntities();
+                DB.dEntities entities = App.dEntities;
 
                 var material = entities.Materials.ToList();
 
@@ -69,7 +69,7 @@ namespace WPF_IS_19_02.View
             }
             try
             {
-                DB.dEntities entities = new DB.dEntities();
+                DB.dEntities entities = App.dEntities;
                 entities.Materials.Add(neWmaterials);
                 entities.SaveChanges();
                 return true;
@@ -84,7 +84,7 @@ namespace WPF_IS_19_02.View
         {
             try
             {
-                DB.dEntities entities = new DB.dEntities();
+                DB.dEntities entities = App.dEntities;
                 return entities.MaterialSI.Where(x => x.Name == name).First().Id;
             }
             catch
@@ -97,8 +97,8 @@ namespace WPF_IS_19_02.View
         {
             try
             {
-                DB.dEntities entities = new DB.dEntities();
-                entities.Materials.Remove(entities.Materials.Find(materials.Id));
+                DB.dEntities entities = App.dEntities;
+                entities.Materials.Remove(entities.Materials.Where( x => x.Id ==materials.Id).FirstOrDefault());
                 entities.SaveChanges();
             }
             catch
@@ -111,8 +111,8 @@ namespace WPF_IS_19_02.View
         {
             try
             {
-                DB.dEntities entities = new DB.dEntities();
-              if ( entities.Receipts.Where( x=>x.Id_Material == material.Materials.Id).ToList().Count>0)
+                DB.dEntities entities = App.dEntities;
+                if ( entities.Receipts.Where( x=>x.Id_Material == material.Materials.Id).ToList().Count>0)
                 {
                     return true;
                 }
@@ -131,8 +131,8 @@ namespace WPF_IS_19_02.View
         {
            try
             {
-              DB.dEntities entities = new DB.dEntities();
-              return  entities.MaterialTypes.Where(x => x.Name == name).First().Id;
+                DB.dEntities entities = App.dEntities;
+                return  entities.MaterialTypes.Where(x => x.Name == name).First().Id;
             }
             catch
             {
@@ -147,10 +147,10 @@ namespace WPF_IS_19_02.View
          object sI,
          object typeMaterial , DB.Materials materials)
         {
-            DB.dEntities entities = new DB.dEntities();
+            DB.dEntities entities = App.dEntities;
 
 
-            DB.Materials neWmaterials = entities.Materials.Find(materials.Id);
+            DB.Materials neWmaterials = entities.Materials.Where(x=>x.Id == materials.Id).First();
 
             try
             {
@@ -175,7 +175,7 @@ namespace WPF_IS_19_02.View
             }
             try
             {
-                entities.Materials.AddOrUpdate(neWmaterials);
+                entities.Materials.Add(neWmaterials);
                 entities.SaveChanges();
                 return true;
             }

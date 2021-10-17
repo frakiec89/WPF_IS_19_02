@@ -13,6 +13,10 @@ namespace WPF_IS_19_02
     /// </summary>
     public partial class App : Application
     {
+
+        public static DB.dEntities dEntities { get; } = new DB.dEntities();
         public static DB.User User { get; set; }
+
+
     }
 }
